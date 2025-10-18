@@ -1,57 +1,63 @@
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
-  background-color: #ffffff;
-  color: #222222;
+  font-family: Arial, sans-serif;
+  color: #222;
+  background-color: #f0f4f7;
 }
 
 header {
-  background: linear-gradient(135deg, #048b33 50%, #f9db0c 50%);
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  background-color: #006a44;
+  color: #fff;
   text-align: center;
-  padding: 40px 0 80px 0;
-  color: #000000;
+  padding: 25px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 header h1 {
-  font-size: 2.2rem;
   margin: 0;
+  font-size: 2em;
+  font-weight: 700;
 }
 
 .navbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(6px);
-  padding: 10px;
-  flex-wrap: wrap;
+  background-color: #f0f4f7;
+  gap: 15px;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .navbar ul {
-  list-style: none;
   display: flex;
-  gap: 15px;
-  padding: 0;
+  list-style: none;
   margin: 0;
+  padding: 0;
+  gap: 12px;
 }
 
 .navbar a {
   text-decoration: none;
-  padding: 10px 20px;
-  color: #222222;
+  padding: 8px 15px;
+  color: #006a44;
+  border-radius: 5px;
   border: 2px solid transparent;
-  border-radius: 8px;
-  transition: border-color 0.3s;
+  font-weight: 700;
+  transition: all 0.3s;
 }
 
 .navbar a:hover {
-  border-color: #f9db0c;
+  border: 2px solid #fc0;
+  background-color: #fff;
 }
 
 .navbar a.active {
-  border-color: #f9db0c;
+  border: 2px solid #fc0;
+  background-color: #fff;
 }
 
 .search-container {
@@ -59,80 +65,96 @@ header h1 {
 }
 
 #searchInput {
-  padding: 8px;
-  border-radius: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
   margin-left: 10px;
 }
 
 #searchResults {
   position: absolute;
-  top: 35px;
+  top: 36px;
   left: 0;
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #ccc;
+  border-radius: 6px;
   display: none;
-  z-index: 10;
-  max-height: 200px;
-  overflow-y: auto;
   width: 100%;
-  border-radius: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+  z-index: 10;
 }
 
 #searchResults button {
-  display: block;
   width: 100%;
-  border: none;
-  background: none;
-  padding: 8px;
   text-align: left;
+  padding: 8px;
+  background: none;
+  border: none;
   cursor: pointer;
 }
 
 #searchResults button:hover {
-  background-color: #f9db0c;
-  color: #222222;
+  background-color: #fc0;
+  color: #006a44;
 }
 
 .section-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  padding: 40px;
+  padding: 35px;
   max-width: 1200px;
   margin: auto;
 }
 
-.section-grid article {
+.section-grid div {
   background-color: #e1efdb;
-  border-radius: 12px;
-  padding: 20px;
+  padding: 18px;
+  border-radius: 10px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.section-grid article:hover,
-.section-grid article:focus {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+.section-grid div:hover,
+.section-grid div:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   outline: none;
 }
 
+section {
+  max-width: 900px;
+  margin: 25px auto;
+  padding: 18px;
+  background-color: #fff;
+  border-left: 6px solid #006a44;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  color: #006a44;
+  margin-top: 0;
+}
+
 footer {
-  background-color: #048b33; 
-  color: #ffffff; 
   text-align: center;
-  padding: 20px;
+  padding: 18px 0;
+  background-color: #006a44;
+  color: #fff;
+  font-size: 0.9em;
+  margin-top: 25px;
 }
 
 .skip-link {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #048b33;
-  color: #ffffff;
+  background: #006a44;
+  color: #fff;
   padding: 8px;
   z-index: 100;
   transition: top 0.3s;
@@ -140,4 +162,16 @@ footer {
 
 .skip-link:focus {
   top: 0;
+}
+
+@media (max-width:600px) {
+  .navbar ul {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #searchInput {
+    margin-left: 0;
+    margin-top: 8px;
+  }
 }
