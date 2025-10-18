@@ -119,11 +119,13 @@ header h1 {
 }
 
 footer {
-  background-color: #048b33; 
-  color: #ffffff; 
+  background-color: #048b33; /* verde sólido */
+  color: #ffffff;
   text-align: center;
   padding: 20px;
+  font-size: 14px; /* al menos 14px */
 }
+
 
 .skip-link {
   position: absolute;
