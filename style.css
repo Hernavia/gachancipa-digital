@@ -121,8 +121,8 @@ header h1 {
 }
 
 footer {
-  background-color: #048b33;
-  color: #ffffff;
+  background-color: #048b33; 
+  color: #ffffff; 
   text-align: center;
   padding: 20px;
 }
