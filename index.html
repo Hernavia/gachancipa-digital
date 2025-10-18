@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Hernavia — Plataforma Cívica (demo)</title>
-<meta name="description" content="Plataforma cívica de Gachancipá — demo. Archivos, memoria, participación y educación cívica.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gachancipá — Plataforma Cívica</title>
+<meta name="description" content="Plataforma cívica de Gachancipá. Archivos, memoria, participación y educación cívica.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,8 +12,8 @@
 <a href="#temas" class="skip-link">Saltar al contenido principal</a>
 
 <header>
-  <h1 id="titulo-principal">Alcaldía Municipal</h1>
-  <p>Plataforma cívica de Hernavia — Gachancipá (demo)</p>
+  <h1>Alcaldía Municipal de Gachancipá</h1>
+  <p>Plataforma cívica — demo</p>
 </header>
 
 <nav class="navbar">
@@ -32,54 +32,54 @@
 <main id="temas">
   <h2>Temas principales</h2>
   <section class="section-grid">
-    <article data-keywords="archivos documentos memoria" tabindex="0">
+    <div data-keywords="archivos documentos memoria" tabindex="0">
       <h3>Archivos permanentes y organizados</h3>
       <p>Repositorio de documentos oficiales, acuerdos, actas y archivos históricos del municipio.</p>
-    </article>
-    <article data-keywords="continuidad administraciones gestión" tabindex="0">
+    </div>
+    <div data-keywords="continuidad administraciones gestión" tabindex="0">
       <h3>Continuidad entre administraciones</h3>
       <p>Mecanismos para preservar la información y asegurar la memoria institucional al cambiar de gestión.</p>
-    </article>
-    <article data-keywords="busqueda documentos proyectos" tabindex="0">
+    </div>
+    <div data-keywords="busqueda documentos proyectos" tabindex="0">
       <h3>Motor de búsqueda interno</h3>
       <p>Búsqueda rápida de documentos, noticias, proyectos y eventos dentro de la plataforma.</p>
-    </article>
-    <article data-keywords="offline movil acceso" tabindex="0">
+    </div>
+    <div data-keywords="offline movil acceso" tabindex="0">
       <h3>Soporte multiplataforma / modo offline</h3>
       <p>Acceso desde dispositivos móviles y funcionalidad parcial sin conexión para zonas con internet limitado.</p>
-    </article>
-    <article data-keywords="mapa lugares proyectos" tabindex="0">
+    </div>
+    <div data-keywords="mapa lugares proyectos" tabindex="0">
       <h3>Mapa interactivo</h3>
       <p>Mapa con puntos de interés: obras, instituciones, sitios culturales y proyectos ciudadanos.</p>
-    </article>
-    <article data-keywords="pagina accesible rápida" tabindex="0">
+    </div>
+    <div data-keywords="pagina accesible rápida" tabindex="0">
       <h3>Página rápida y accesible</h3>
       <p>Diseño con carga rápida, accesibilidad para personas con discapacidad y navegación sencilla.</p>
-    </article>
-    <article data-keywords="calendario eventos comunidad" tabindex="0">
+    </div>
+    <div data-keywords="calendario eventos comunidad" tabindex="0">
       <h3>Calendario comunitario</h3>
       <p>Agenda de eventos municipales, ferias, talleres y fechas culturales relevantes.</p>
-    </article>
-    <article data-keywords="educacion civica guia" tabindex="0">
+    </div>
+    <div data-keywords="educacion civica guia" tabindex="0">
       <h3>Educación cívica</h3>
       <p>Recursos y guías para entender derechos, trámites, participación ciudadana y procesos locales.</p>
-    </article>
-    <article data-keywords="wikipedia enciclopedia local" tabindex="0">
+    </div>
+    <div data-keywords="wikipedia enciclopedia local" tabindex="0">
       <h3>Wikipedia local</h3>
       <p>Enciclopedia colaborativa y filtrada con temas de historia, personajes, geografía y cultura local.</p>
-    </article>
-    <article data-keywords="cronicas relatos historia" tabindex="0">
+    </div>
+    <div data-keywords="cronicas relatos historia" tabindex="0">
       <h3>Crónicas del pueblo</h3>
       <p>Relatos, memorias, entrevistas y fotografías aportadas por la comunidad —memoria viva del municipio.</p>
-    </article>
-    <article data-keywords="aula escolar material" tabindex="0">
+    </div>
+    <div data-keywords="aula escolar material" tabindex="0">
       <h3>Aula municipal</h3>
       <p>Recursos educativos, proyectos escolares y material formativo para colegios e instituciones.</p>
-    </article>
-    <article data-keywords="proyectos emprendimientos comunidad" tabindex="0">
+    </div>
+    <div data-keywords="proyectos emprendimientos comunidad" tabindex="0">
       <h3>Proyectos gachancipeños</h3>
       <p>Iniciativas locales, emprendimientos, proyectos comunitarios y convocatorias abiertas.</p>
-    </article>
+    </div>
   </section>
 
   <section id="contacto" class="contacto">
@@ -99,7 +99,7 @@
 <script>
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
-const items = document.querySelectorAll(".section-grid article");
+const items = document.querySelectorAll(".section-grid div");
 
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase();
