@@ -10,7 +10,7 @@ header {
   clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
   text-align: center;
   padding: 40px 0 80px 0;
-  color: #222222;
+  color: #ffffff; /* Todo el texto del header ahora es blanco */
 }
 
 header h1 {
@@ -139,15 +139,3 @@ footer {
 .skip-link:focus {
   top: 0;
 }
-
-.header-box {
-  background-color: #f9f9f9; 
-  padding: 20px 25px;
-  border-radius: 12px;
-  margin: 20px auto;
-  max-width: 900px;
-  text-align: center;
-  color: #222222; 
-  box-sizing: border-box;
-}
-
