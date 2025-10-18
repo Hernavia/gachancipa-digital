@@ -1,12 +1,12 @@
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background-color: #ffffff;
+  background-color: #e1efdb;
   color: #222;
 }
 
 header {
-  background: linear-gradient(135deg, #006a44 50%, #ffcc00 50%);
+  background: linear-gradient(135deg, #048b33 50%, #f9db0c 50%);
   clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
   color: white;
   text-align: center;
@@ -21,28 +21,78 @@ header h1 {
 
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   gap: 10px;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(225, 239, 219, 0.7);
   backdrop-filter: blur(8px);
-  position: relative;
-  top: -40px;
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.navbar a {
-  background-color: #006a44;
+.navbar ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 10px;
+}
+
+.navbar li a {
+  background-color: #048b33;
   color: white;
-  padding: 12px 20px;
+  padding: 10px 16px;
   text-decoration: none;
   border-radius: 8px;
   font-weight: 600;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
-.navbar a:hover {
-  background-color: #ffcc00;
+.navbar li a:hover {
+  background-color: #f9db0c;
+  color: #222;
+  transform: translateY(-3px);
+}
+
+.search-container {
+  position: relative;
+}
+
+#searchInput {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #048b33;
+  width: 180px;
+}
+
+#searchResults {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #048b33;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  width: 200px;
+  z-index: 20;
+}
+
+#searchResults button {
+  width: 100%;
+  padding: 8px;
+  background-color: #e1efdb;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+#searchResults button:hover {
+  background-color: #f9db0c;
   color: #222;
 }
 
@@ -56,21 +106,23 @@ header h1 {
 }
 
 .section-grid div {
-  background-color: #f7f7f7;
-  border: 2px solid #e6e6e6;
+  background-color: #ffffff;
+  border: 2px solid #048b33;
   border-radius: 12px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s, border-color 0.3s;
+  cursor: pointer;
 }
 
 .section-grid div:hover {
-  transform: scale(1.02);
-  transition: 0.3s;
+  transform: translateY(-5px);
+  border-color: #f9db0c;
 }
 
 footer {
-  background-color: #006a44;
+  background-color: #048b33;
   color: white;
   text-align: center;
   padding: 20px;
@@ -78,7 +130,7 @@ footer {
 }
 
 footer a {
-  color: #ffcc00;
+  color: #f9db0c;
   text-decoration: none;
   font-weight: 600;
 }
