@@ -9,7 +9,7 @@
 </head>
 <body>
 <header>
-  <h1>Alcaldía Municipal</h1>
+  <h1 id="titulo-principal">Alcaldía Municipal</h1>
   <p>Plataforma cívica de Hernavia — Gachancipá (demo)</p>
 </header>
 
@@ -28,18 +28,63 @@
 
 <main>
   <section id="temas" class="section-grid">
-    <div data-keywords="archivos documentos memoria">Archivos permanentes y organizados</div>
-    <div data-keywords="continuidad administraciones gestión">Continuidad entre administraciones</div>
-    <div data-keywords="busqueda documentos proyectos">Motor de búsqueda interno</div>
-    <div data-keywords="offline movil acceso">Soporte multiplataforma / modo offline</div>
-    <div data-keywords="mapa lugares proyectos">Mapa interactivo</div>
-    <div data-keywords="pagina accesible rápida">Página rápida y accesible</div>
-    <div data-keywords="calendario eventos comunidad">Calendario comunitario</div>
-    <div data-keywords="educacion civica guia">Educación cívica</div>
-    <div data-keywords="wikipedia enciclopedia local">Wikipedia local</div>
-    <div data-keywords="cronicas relatos historia">Crónicas del pueblo</div>
-    <div data-keywords="aula escolar material">Aula municipal</div>
-    <div data-keywords="proyectos emprendimientos comunidad">Proyectos gachancipeños</div>
+    <div data-keywords="archivos documentos memoria">
+      <h3>Archivos permanentes y organizados</h3>
+      <p>Repositorio de documentos oficiales, acuerdos, actas y archivos históricos del municipio.</p>
+    </div>
+    <div data-keywords="continuidad administraciones gestión">
+      <h3>Continuidad entre administraciones</h3>
+      <p>Mecanismos para preservar la información y asegurar la memoria institucional al cambiar de gestión.</p>
+    </div>
+    <div data-keywords="busqueda documentos proyectos">
+      <h3>Motor de búsqueda interno</h3>
+      <p>Búsqueda rápida de documentos, noticias, proyectos y eventos dentro de la plataforma.</p>
+    </div>
+    <div data-keywords="offline movil acceso">
+      <h3>Soporte multiplataforma / modo offline</h3>
+      <p>Acceso desde dispositivos móviles y funcionalidad parcial sin conexión para zonas con internet limitado.</p>
+    </div>
+    <div data-keywords="mapa lugares proyectos">
+      <h3>Mapa interactivo</h3>
+      <p>Mapa con puntos de interés: obras, instituciones, sitios culturales y proyectos ciudadanos.</p>
+    </div>
+    <div data-keywords="pagina accesible rápida">
+      <h3>Página rápida y accesible</h3>
+      <p>Diseño con carga rápida, accesibilidad para personas con discapacidad y navegación sencilla.</p>
+    </div>
+    <div data-keywords="calendario eventos comunidad">
+      <h3>Calendario comunitario</h3>
+      <p>Agenda de eventos municipales, ferias, talleres y fechas culturales relevantes.</p>
+    </div>
+    <div data-keywords="educacion civica guia">
+      <h3>Educación cívica</h3>
+      <p>Recursos y guías para entender derechos, trámites, participación ciudadana y procesos locales.</p>
+    </div>
+    <div data-keywords="wikipedia enciclopedia local">
+      <h3>Wikipedia local</h3>
+      <p>Enciclopedia colaborativa y filtrada con temas de historia, personajes, geografía y cultura local.</p>
+    </div>
+    <div data-keywords="cronicas relatos historia">
+      <h3>Crónicas del pueblo</h3>
+      <p>Relatos, memorias, entrevistas y fotografías aportadas por la comunidad —memoria viva del municipio.</p>
+    </div>
+    <div data-keywords="aula escolar material">
+      <h3>Aula municipal</h3>
+      <p>Recursos educativos, proyectos escolares y material formativo para colegios e instituciones.</p>
+    </div>
+    <div data-keywords="proyectos emprendimientos comunidad">
+      <h3>Proyectos gachancipeños</h3>
+      <p>Iniciativas locales, emprendimientos, proyectos comunitarios y convocatorias abiertas.</p>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <h2>Contáctanos</h2>
+    <p>Para coordinar información oficial, envíanos los correos institucionales y los textos que desean publicar:</p>
+    <ul>
+      <li><strong>Correo Alcaldía (Gachancipá):</strong> [correo@alcaldia-gachancipa.gov.co]</li>
+      <li><strong>Correo Hernavia:</strong> [correo@hernavia.org]</li>
+    </ul>
   </section>
 </main>
 
@@ -66,7 +111,7 @@ searchInput.addEventListener("input", () => {
     const keywords = item.dataset.keywords.toLowerCase();
     if(keywords.includes(query) || item.textContent.toLowerCase().includes(query)) {
       const btn = document.createElement("button");
-      btn.textContent = item.textContent;
+      btn.textContent = item.querySelector("h3").textContent;
       btn.onclick = () => { item.scrollIntoView({behavior:"smooth"}); searchResults.style.display="none"; searchInput.value=""; };
       searchResults.appendChild(btn);
       found = true;
