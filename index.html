@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hernavia — Plataforma Cívica (demo)</title>
   <meta name="description" content="Plataforma cívica de Gachancipá — demo. Archivos, memoria, participación y educación cívica." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header role="banner" aria-label="Encabezado principal">
@@ -12,24 +13,21 @@
     <p id="subtitulo">Plataforma cívica de Hernavia — Gachancipá (demo)</p>
   </header>
 
-  <nav aria-label="Navegación principal">
-    <ul>
-      <li><a href="#archivos">Archivos</a></li>
-      <li><a href="#mapa">Mapa</a></li>
-      <li><a href="#cronicas">Crónicas</a></li>
-      <li><a href="#educacion">Educación Cívica</a></li>
-      <li><a href="#aula">Aula Municipal</a></li>
-      <li><a href="#proyectos">Proyectos Gachancipeños</a></li>
-      <li><a href="#contacto">Contáctanos</a></li>
-    </ul>
+  <nav class="navbar" aria-label="Navegación principal">
+    <a href="#archivos">Archivos</a>
+    <a href="#mapa">Mapa</a>
+    <a href="#cronicas">Crónicas</a>
+    <a href="#educacion">Educación Cívica</a>
+    <a href="#aula">Aula Municipal</a>
+    <a href="#proyectos">Proyectos Gachancipeños</a>
+    <a href="#contacto">Contáctanos</a>
   </nav>
 
   <main role="main">
     <section id="temas" aria-labelledby="temas-titulo">
       <h2 id="temas-titulo">Temas principales</h2>
 
-      <div id="cuadros">
-        <!-- Cada artículo representa un cuadro/tema -->
+      <div id="cuadros" class="section-grid">
         <article class="cuadro" id="archivos" aria-labelledby="archivos-titulo">
           <h3 id="archivos-titulo">Archivos permanentes y organizados</h3>
           <p>Repositorio de documentos oficiales, acuerdos, actas y archivos históricos del municipio.</p>
@@ -101,21 +99,20 @@
           <strong>Correo Alcaldía (Gachancipá):</strong>
           <span id="email-gachancipa">[correo@alcaldia-gachancipa.gov.co]</span>
         </li>
-
         <li>
-          <strong>Correo Hernavia (Creadores de la web):</strong>
-          <!-- Deja espacio para que agreguen el correo -->
+          <strong>Correo Hernavia:</strong>
           <span id="email-hernavia">[correo@hernavia.org]</span>
         </li>
       </ul>
-
-      <p>También puedes incluir teléfono, dirección de alcaldía o formulario de contacto en esta sección cuando decidan hacerlo.</p>
     </section>
   </main>
 
   <footer role="contentinfo" aria-label="Pie de página">
     <p>© <span id="anio">2025</span> Hernavia — Plataforma cívica de Gachancipá (demo).</p>
-    <p>Proyecto en fase de propuesta. Pendiente oficialización y aportes de la Alcaldía Municipal.</p>
   </footer>
+
+  <script>
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
