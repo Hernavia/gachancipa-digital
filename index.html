@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<a href="#temas" class="skip-link">Saltar al contenido principal</a>
+
 <header>
   <h1 id="titulo-principal">Alcaldía Municipal</h1>
   <p>Plataforma cívica de Hernavia — Gachancipá (demo)</p>
@@ -26,53 +29,54 @@
   </div>
 </nav>
 
-<main>
-  <section id="temas" class="section-grid">
-    <div data-keywords="archivos documentos memoria">
+<main id="temas">
+  <h2>Temas principales</h2>
+  <section class="section-grid">
+    <div data-keywords="archivos documentos memoria" tabindex="0">
       <h3>Archivos permanentes y organizados</h3>
       <p>Repositorio de documentos oficiales, acuerdos, actas y archivos históricos del municipio.</p>
     </div>
-    <div data-keywords="continuidad administraciones gestión">
+    <div data-keywords="continuidad administraciones gestión" tabindex="0">
       <h3>Continuidad entre administraciones</h3>
       <p>Mecanismos para preservar la información y asegurar la memoria institucional al cambiar de gestión.</p>
     </div>
-    <div data-keywords="busqueda documentos proyectos">
+    <div data-keywords="busqueda documentos proyectos" tabindex="0">
       <h3>Motor de búsqueda interno</h3>
       <p>Búsqueda rápida de documentos, noticias, proyectos y eventos dentro de la plataforma.</p>
     </div>
-    <div data-keywords="offline movil acceso">
+    <div data-keywords="offline movil acceso" tabindex="0">
       <h3>Soporte multiplataforma / modo offline</h3>
       <p>Acceso desde dispositivos móviles y funcionalidad parcial sin conexión para zonas con internet limitado.</p>
     </div>
-    <div data-keywords="mapa lugares proyectos">
+    <div data-keywords="mapa lugares proyectos" tabindex="0">
       <h3>Mapa interactivo</h3>
       <p>Mapa con puntos de interés: obras, instituciones, sitios culturales y proyectos ciudadanos.</p>
     </div>
-    <div data-keywords="pagina accesible rápida">
+    <div data-keywords="pagina accesible rápida" tabindex="0">
       <h3>Página rápida y accesible</h3>
       <p>Diseño con carga rápida, accesibilidad para personas con discapacidad y navegación sencilla.</p>
     </div>
-    <div data-keywords="calendario eventos comunidad">
+    <div data-keywords="calendario eventos comunidad" tabindex="0">
       <h3>Calendario comunitario</h3>
       <p>Agenda de eventos municipales, ferias, talleres y fechas culturales relevantes.</p>
     </div>
-    <div data-keywords="educacion civica guia">
+    <div data-keywords="educacion civica guia" tabindex="0">
       <h3>Educación cívica</h3>
       <p>Recursos y guías para entender derechos, trámites, participación ciudadana y procesos locales.</p>
     </div>
-    <div data-keywords="wikipedia enciclopedia local">
+    <div data-keywords="wikipedia enciclopedia local" tabindex="0">
       <h3>Wikipedia local</h3>
       <p>Enciclopedia colaborativa y filtrada con temas de historia, personajes, geografía y cultura local.</p>
     </div>
-    <div data-keywords="cronicas relatos historia">
+    <div data-keywords="cronicas relatos historia" tabindex="0">
       <h3>Crónicas del pueblo</h3>
       <p>Relatos, memorias, entrevistas y fotografías aportadas por la comunidad —memoria viva del municipio.</p>
     </div>
-    <div data-keywords="aula escolar material">
+    <div data-keywords="aula escolar material" tabindex="0">
       <h3>Aula municipal</h3>
       <p>Recursos educativos, proyectos escolares y material formativo para colegios e instituciones.</p>
     </div>
-    <div data-keywords="proyectos emprendimientos comunidad">
+    <div data-keywords="proyectos emprendimientos comunidad" tabindex="0">
       <h3>Proyectos gachancipeños</h3>
       <p>Iniciativas locales, emprendimientos, proyectos comunitarios y convocatorias abiertas.</p>
     </div>
@@ -89,7 +93,7 @@
 </main>
 
 <footer>
-  <p>© <span id="anio">2025</span> Hernavia — Plataforma cívica de Gachancipá (demo)</p>
+  <p>© <span id="anio"></span> Hernavia — Plataforma cívica de Gachancipá (demo)</p>
 </footer>
 
 <script>
@@ -119,6 +123,13 @@ searchInput.addEventListener("input", () => {
   });
   searchResults.style.display = found ? "block" : "none";
 });
+
+items.forEach(item => {
+  item.addEventListener("keypress", (e) => {
+    if(e.key === "Enter") item.scrollIntoView({behavior:"smooth"});
+  });
+});
 </script>
+
 </body>
 </html>
