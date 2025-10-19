@@ -330,3 +330,28 @@ main, section, p {
   border-left: 4px solid #078930;
   border-radius: 0 0 8px 8px;
 }
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+#searchInput {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #078930;
+  width: 200px;
+}
+
+#filterDate {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #078930;
+  background-color: #ffffff;
+  color: #000000;
+}
+
