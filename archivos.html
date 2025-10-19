@@ -31,6 +31,18 @@
 
 <main class="archivos-container">
 
+  <section class="search-controls">
+    <div class="filtros">
+      <label for="dateFrom">Desde</label>
+      <input type="date" id="dateFrom">
+      <label for="dateTo">Hasta</label>
+      <input type="date" id="dateTo">
+      <button id="btnFilter" class="filter-btn">Filtrar</button>
+      <button id="btnClear" class="clear-btn">Limpiar</button>
+    </div>
+    <div class="result-count" id="resultCount">Mostrando todas las noticias</div>
+  </section>
+
   <article class="archivo-mes" data-month="2025-10">
     <h2>Octubre 2025</h2>
 
@@ -68,9 +80,51 @@
 </footer>
 
 <script>
+const btnFilter = document.getElementById('btnFilter');
+const btnClear = document.getElementById('btnClear');
+const dateFrom = document.getElementById('dateFrom');
+const dateTo = document.getElementById('dateTo');
+const items = Array.from(document.querySelectorAll('.archivo-item'));
+const resultCount = document.getElementById('resultCount');
+
+function formatCount(n){
+  return n === 0 ? 'No hay resultados' : n === 1 ? '1 resultado' : n + ' resultados';
+}
+
+function applyFilters(){
+  const from = dateFrom.value;
+  const to = dateTo.value;
+  let visible = 0;
+
+  items.forEach(it => {
+    const date = it.dataset.date;
+    let show = true;
+    if(from && date < from) show = false;
+    if(to && date > to) show = false;
+    it.style.display = show ? 'block' : 'none';
+    visible += show ? 1 : 0;
+  });
+
+  resultCount.textContent = formatCount(visible);
+}
+
+btnFilter.addEventListener('click', e => {
+  e.preventDefault();
+  applyFilters();
+});
+
+btnClear.addEventListener('click', e => {
+  e.preventDefault();
+  dateFrom.value = '';
+  dateTo.value = '';
+  applyFilters();
+});
+</script>
+
+<script>
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
-const items = document.querySelectorAll(".archivo-item");
+const searchItems = document.querySelectorAll(".archivo-item");
 
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase();
@@ -80,7 +134,7 @@ searchInput.addEventListener("input", () => {
     return;
   }
   let found = false;
-  items.forEach(item => {
+  searchItems.forEach(item => {
     const keywords = item.dataset.keywords.toLowerCase();
     if(keywords.includes(query) || item.textContent.toLowerCase().includes(query)) {
       const btn = document.createElement("button");
@@ -93,7 +147,7 @@ searchInput.addEventListener("input", () => {
   searchResults.style.display = found ? "block" : "none";
 });
 
-items.forEach(item => {
+searchItems.forEach(item => {
   item.addEventListener("keypress", (e) => {
     if(e.key === "Enter") item.scrollIntoView({behavior:"smooth"});
   });
