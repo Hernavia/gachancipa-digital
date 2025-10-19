@@ -61,7 +61,7 @@ header h1 {
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 10px auto;
+  margin: 5px auto;
 }
 
 #searchInput, #searchInputFiles {
