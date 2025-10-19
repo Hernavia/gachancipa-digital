@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proyectos — Gachancipá</title>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="Proyectos municipales y comunitarios de Gachancipá, incluyendo Hernavia y otros proyectos locales.">
+</head>
+<body>
+<header>
+  <h1>Proyectos Municipales</h1>
+  <div class="header-box"><p>Repositorio de proyectos de Gachancipá</p></div>
+</header>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="archivos.html">Archivos</a></li>
+    <li><a href="calendario.html">Calendario</a></li>
+    <li><a href="educacion.html">Educación</a></li>
+    <li><a href="cronicas.html">Crónicas</a></li>
+    <li><a href="proyectos.html" class="active">Proyectos</a></li>
+    <li><a href="llamados.html">Llamados al Pueblo</a></li>
+    <li><a href="wikigacha.html">Enciclopedia Gachancipeña</a></li>
+  </ul>
+  <div class="search-container">
+    <label for="searchInput" class="sr-only">Buscar proyectos</label>
+    <input type="text" id="searchInput" placeholder="Buscar...">
+    <div id="searchResults"></div>
+  </div>
+</nav>
+
+<main class="archivos-container">
+<section class="search-controls">
+  <h2>Filtrar proyectos</h2>
+  <div class="filtros">
+    <label for="dateFrom">Desde</label>
+    <input type="date" id="dateFrom">
+    <label for="dateTo">Hasta</label>
+    <input type="date" id="dateTo">
+    <button id="btnFilter" class="filter-btn">Filtrar</button>
+    <button id="btnClear" class="clear-btn">Limpiar</button>
+  </div>
+  <div class="result-count" id="resultCount">Mostrando todos los proyectos</div>
+</section>
+
+<article class="archivo-mes" data-month="2025-10">
+  <h2>Proyectos Actuales</h2>
+
+  <details class="archivo-item" data-date="2025-10-01" data-keywords="hernavia tecnologia plataforma digital">
+    <summary>Hernavia — Plataforma cívica digital</summary>
+    <p class="meta">Responsable: Municipalidad de Gachancipá — Inicio: 01/10/2025</p>
+    <p>Proyecto de plataforma digital regional para participación cívica, documentación comunitaria y herramientas educativas.</p>
+    <a class="btn-ver" href="https://hernavia.github.io">Ver más detalles</a>
+  </details>
+
+  <details class="archivo-item" data-date="2025-09-20" data-keywords="parque recreacion espacio publico">
+    <summary>Parque Recreativo Central</summary>
+    <p class="meta">Responsable: Alcaldía — Inicio: 20/09/2025</p>
+    <p>Construcción y adecuación de un parque central para actividades deportivas y recreativas en Gachancipá.</p>
+    <a class="btn-ver" href="#">Ver más detalles</a>
+  </details>
+
+  <details class="archivo-item" data-date="2025-08-15" data-keywords="educacion taller comunidad">
+    <summary>Talleres de educación comunitaria</summary>
+    <p class="meta">Responsable: Secretaría de Educación — Inicio: 15/08/2025</p>
+    <p>Programa de talleres educativos para líderes comunitarios y colegios locales.</p>
+    <a class="btn-ver" href="#">Ver más detalles</a>
+  </details>
+
+  <details class="archivo-item" data-date="2025-07-10" data-keywords="cultura feria municipal">
+    <summary>Feria Cultural Municipal</summary>
+    <p class="meta">Responsable: Secretaría de Cultura — Inicio: 10/07/2025</p>
+    <p>Evento anual que promueve la cultura local, con participación de artesanos, artistas y empresarios de la región.</p>
+    <a class="btn-ver" href="#">Ver más detalles</a>
+  </details>
+
+</article>
+</main>
+
+<footer>
+  <p>©2025 — Proyectos Municipales de Gachancipá</p>
+</footer>
+
+<script>
+const btnFilter = document.getElementById('btnFilter');
+const btnClear = document.getElementById('btnClear');
+const dateFrom = document.getElementById('dateFrom');
+const dateTo = document.getElementById('dateTo');
+const items = Array.from(document.querySelectorAll('.archivo-item'));
+const resultCount = document.getElementById('resultCount');
+
+function formatCount(n){
+  return n === 0 ? 'No hay resultados' : n === 1 ? '1 resultado' : n + ' resultados';
+}
+
+function applyFilters(){
+  const from = dateFrom.value;
+  const to = dateTo.value;
+  let visible = 0;
+
+  items.forEach(it => {
+    const date = it.dataset.date;
+    let show = true;
+    if(from && date < from) show = false;
+    if(to && date > to) show = false;
+    it.style.display = show ? 'block' : 'none';
+    visible += show ? 1 : 0;
+  });
+
+  resultCount.textContent = formatCount(visible);
+}
+
+btnFilter.addEventListener('click', e => {
+  e.preventDefault();
+  applyFilters();
+});
+
+btnClear.addEventListener('click', e => {
+  e.preventDefault();
+  dateFrom.value = '';
+  dateTo.value = '';
+  applyFilters();
+});
+
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  searchResults.innerHTML = "";
+  if(query === "") {
+    searchResults.style.display = "none";
+    return;
+  }
+  let found = false;
+  items.forEach(item => {
+    const keywords = item.dataset.keywords.toLowerCase();
+    if(keywords.includes(query) || item.textContent.toLowerCase().includes(query)) {
+      const btn = document.createElement("button");
+      btn.textContent = item.querySelector("summary").textContent;
+      btn.onclick = () => { item.scrollIntoView({behavior:"smooth"}); searchResults.style.display="none"; searchInput.value=""; };
+      searchResults.appendChild(btn);
+      found = true;
+    }
+  });
+  searchResults.style.display = found ? "block" : "none";
+});
+</script>
