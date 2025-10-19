@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Llamados al Pueblo — Gachancipá</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  .llamados-container { max-width:1100px; margin:40px auto; padding:20px; }
+  .votacion, details.votacion { background:#fff; border:2px solid #000; border-radius:10px; padding:12px; margin-top:10px; }
+  .votacion h4 { margin:0; }
+  .votacion button { padding:8px 14px; margin-right:6px; border:none; border-radius:6px; cursor:pointer; font-weight:bold; transition:0.3s; }
+  .votacion button:hover { background:#078930; color:#fff; }
+  .resultado { margin-top:8px; font-weight:bold; }
+</style>
 </head>
 <body>
 <header>
@@ -20,6 +28,7 @@
     <li><a href="educacion.html">Educación</a></li>
     <li><a href="proyectos.html">Proyectos</a></li>
     <li><a href="llamados.html" class="active">Llamados al Pueblo</a></li>
+    <li><a href="wikigacha.html">Enciclopedia Gachancipeña</a></li>
   </ul>
 </nav>
 
@@ -44,15 +53,16 @@
     <details class="votacion">
       <summary>Presupuesto Municipal 2025 — 15/10/2025</summary>
       <p>Se aprobó el presupuesto municipal 2025 con los siguientes puntos clave...</p>
-      <p>Resultado: Aprobado</p>
+      <p class="resultado">Resultado: Aprobado 75% Sí / 25% No</p>
     </details>
 
     <!-- Votación abierta -->
     <div class="votacion abierta" data-date="2025-10-31">
       <h4>Presupuesto Extraordinario 2025</h4>
       <p>Se propone un presupuesto extraordinario para obras de infraestructura. ¿Estás de acuerdo?</p>
-      <button>Sí</button>
-      <button>No</button>
+      <button class="vote-btn" data-vote="si">Sí</button>
+      <button class="vote-btn" data-vote="no">No</button>
+      <p class="resultado"></p>
     </div>
   </article>
 
@@ -64,15 +74,16 @@
     <details class="votacion">
       <summary>Feria Cultural 2025 — 01/10/2025</summary>
       <p>Se realizó la feria cultural con diversas actividades artísticas y educativas.</p>
-      <p>Resultado: Exitosa</p>
+      <p class="resultado">Resultado: Exitosa 80% Sí / 20% No</p>
     </details>
 
     <!-- Votación abierta -->
     <div class="votacion abierta" data-date="2025-10-20">
       <h4>Consulta sobre taller de música</h4>
       <p>Se propone iniciar talleres de música en la ciudad. ¿Quieres que se haga?</p>
-      <button>Sí</button>
-      <button>No</button>
+      <button class="vote-btn" data-vote="si">Sí</button>
+      <button class="vote-btn" data-vote="no">No</button>
+      <p class="resultado"></p>
     </div>
   </article>
 
@@ -87,6 +98,20 @@ categoriaSelect.addEventListener('change', () => {
   const valor = categoriaSelect.value;
   categorias.forEach(cat => {
     cat.style.display = (cat.dataset.categoria === valor) ? 'block' : 'none';
+  });
+});
+
+// Manejo de votos
+const voteButtons = document.querySelectorAll('.vote-btn');
+voteButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const parent = btn.closest('.votacion');
+    const resultado = parent.querySelector('.resultado');
+
+    // Simular porcentajes aleatorios
+    const si = Math.floor(Math.random() * 100);
+    const no = 100 - si;
+    resultado.textContent = `Resultado actual: ${si}% Sí / ${no}% No`;
   });
 });
 </script>
