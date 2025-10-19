@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Archivos — Gachancipá</title>
-  <meta name="description" content="Archivos municipales — búsqueda, noticias y documentos de Gachancipá.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,9 +34,9 @@
     <section class="search-controls">
       <div class="filtros">
         <label for="dateFrom">Desde</label>
-        <input type="date" id="dateFrom">
+        <input type="date" id="dateFrom" style="width:180px;">
         <label for="dateTo">Hasta</label>
-        <input type="date" id="dateTo">
+        <input type="date" id="dateTo" style="width:180px;">
         <button id="btnFilter" class="filter-btn">Filtrar</button>
         <button id="btnClear" class="clear-btn">Limpiar</button>
       </div>
@@ -55,11 +54,11 @@
         <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver Página</a>
       </div>
 
-      <button class="acordeon">Corte de agua programado</button>
+      <button class="acordeon">Compañía eléctrica: aviso de corte</button>
       <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-18" data-keywords="servicios agua corte" tabindex="0">
-        <h4>Corte de agua programado</h4>
+        <h4>Corte de energía programado</h4>
         <p class="meta">Servicios Públicos — 18/10/2025</p>
-        <p>Habrá suspensión del servicio entre las 8:00 y 14:00 por mantenimiento en la red.</p>
+        <p>Habrá suspensión del servicio entre las 8:00 y 14:00 por mantenimiento de la red eléctrica. Se recomienda a la comunidad tomar precauciones.</p>
       </div>
 
       <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres" tabindex="0">
@@ -71,29 +70,11 @@
 
       <button class="acordeon">Reunión de Junta de Acción Comunal</button>
       <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria" tabindex="0">
-        <h4>Reunión de Junta de Acción Comunal</h4>
+        <h4>Convocatoria a reunión</h4>
         <p class="meta">Comunidad — 10/10/2025</p>
-        <p>Convocatoria abierta para todos los presidentes de JAC locales — 7:00 pm en el salón comunal.</p>
-      </div>
-    </article>
-
-    <!-- Septiembre 2025 -->
-    <article class="archivo-mes" data-month="2025-09">
-      <h2>Septiembre 2025</h2>
-
-      <div class="archivo-item" data-type="larga" data-date="2025-09-30" data-keywords="memoria biblioteca patrimonio" tabindex="0">
-        <h4>Inauguración del archivo histórico local</h4>
-        <p class="meta">Cultura — 30/09/2025</p>
-        <p>Se inauguró el nuevo archivo histórico con materiales digitalizados y acceso público.</p>
-        <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver Página</a>
+        <p>Todos los presidentes de JAC locales están invitados a la reunión del próximo martes a las 7:00 pm en el salón comunal.</p>
       </div>
 
-      <button class="acordeon">Seminario de preservación</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-09-30" data-keywords="seminario preservacion archivos" tabindex="0">
-        <h4>Seminario de preservación</h4>
-        <p class="meta">Cultura — 30/09/2025</p>
-        <p>Seminario práctico para gestores de archivos y estudiantes.</p>
-      </div>
     </article>
   </main>
 
@@ -160,179 +141,6 @@
     const acordions=document.querySelectorAll('.acordeon');
     acordions.forEach(btn=>{
       btn.addEventListener('click',()=>{
-        const expanded=btn.getAttribute('aria-expanded')==='true';
-        btn.setAttribute('aria-expanded',String(!expanded));
-        const panel=btn.nextElementSibling;
-        panel.style.display=panel.style.display==='block'?'none':'block';
-      });
-    });
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Archivos — Gachancipá</title>
-  <meta name="description" content="Archivos municipales — búsqueda, noticias y documentos de Gachancipá.">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>Archivos Municipales</h1>
-    <div class="header-box"><p>Repositorio público de Gachancipá</p></div>
-  </header>
-
-  <nav class="navbar">
-    <ul>
-      <li><a href="https://hernavia.github.io/gachancipa-digital/">Inicio</a></li>
-      <li><a href="archivos.html" class="active">Archivos</a></li>
-      <li><a href="calendario.html">Calendario</a></li>
-      <li><a href="educacion.html">Educación</a></li>
-      <li><a href="cronicas.html">Crónicas</a></li>
-      <li><a href="proyectos.html">Proyectos</a></li>
-      <li><a href="llamados.html">Llamados al Pueblo</a></li>
-      <li><a href="wikigacha.html">Enciclopedia Gachancipeña</a></li>
-    </ul>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Buscar...">
-      <div id="searchResults"></div>
-    </div>
-  </nav>
-
-  <main class="archivos-container" id="archivosApp">
-
-    <section class="search-controls">
-      <div class="filtros">
-        <label for="dateFrom">Desde</label>
-        <input type="date" id="dateFrom">
-        <label for="dateTo">Hasta</label>
-        <input type="date" id="dateTo">
-        <button id="btnFilter" class="filter-btn">Filtrar</button>
-        <button id="btnClear" class="clear-btn">Limpiar</button>
-      </div>
-      <div class="result-count" id="resultCount">Mostrando todas las noticias</div>
-    </section>
-
-    <!-- Octubre 2025 -->
-    <article class="archivo-mes" data-month="2025-10">
-      <h2>Octubre 2025</h2>
-
-      <div class="archivo-item" data-type="larga" data-date="2025-10-18" data-keywords="acta consejo cultura feria empresarial" tabindex="0">
-        <h4>Acta 120: Feria Empresarial y espacio de Yukiherts</h4>
-        <p class="meta">Alcaldía — 18/10/2025 — Documentos oficiales</p>
-        <p>Se habilitó un espacio para la feria empresarial donde participará Yukiherts.</p>
-        <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver Página</a>
-      </div>
-
-      <button class="acordeon">Corte de agua programado</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-18" data-keywords="servicios agua corte" tabindex="0">
-        <h4>Corte de agua programado</h4>
-        <p class="meta">Servicios Públicos — 18/10/2025</p>
-        <p>Habrá suspensión del servicio entre las 8:00 y 14:00 por mantenimiento en la red.</p>
-      </div>
-
-      <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres" tabindex="0">
-        <h4>Convocatoria: Talleres de educación cívica</h4>
-        <p class="meta">Educación — 10/10/2025</p>
-        <p>Se abren inscripciones para talleres dirigidos a colegios y líderes comunitarios.</p>
-        <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver Página</a>
-      </div>
-
-      <button class="acordeon">Reunión de Junta de Acción Comunal</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria" tabindex="0">
-        <h4>Reunión de Junta de Acción Comunal</h4>
-        <p class="meta">Comunidad — 10/10/2025</p>
-        <p>Convocatoria abierta para todos los presidentes de JAC locales — 7:00 pm en el salón comunal.</p>
-      </div>
-    </article>
-
-    <!-- Septiembre 2025 -->
-    <article class="archivo-mes" data-month="2025-09">
-      <h2>Septiembre 2025</h2>
-
-      <div class="archivo-item" data-type="larga" data-date="2025-09-30" data-keywords="memoria biblioteca patrimonio" tabindex="0">
-        <h4>Inauguración del archivo histórico local</h4>
-        <p class="meta">Cultura — 30/09/2025</p>
-        <p>Se inauguró el nuevo archivo histórico con materiales digitalizados y acceso público.</p>
-        <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver Página</a>
-      </div>
-
-      <button class="acordeon">Seminario de preservación</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-09-30" data-keywords="seminario preservacion archivos" tabindex="0">
-        <h4>Seminario de preservación</h4>
-        <p class="meta">Cultura — 30/09/2025</p>
-        <p>Seminario práctico para gestores de archivos y estudiantes.</p>
-      </div>
-    </article>
-  </main>
-
-  <footer>
-    <p>©2025 — Archivos Municipales de Gachancipá</p>
-  </footer>
-
-  <script>
-    const searchInput=document.getElementById('searchInput');
-    const searchResults=document.getElementById('searchResults');
-    const btnFilter=document.getElementById('btnFilter');
-    const btnClear=document.getElementById('btnClear');
-    const dateFrom=document.getElementById('dateFrom');
-    const dateTo=document.getElementById('dateTo');
-    const items=Array.from(document.querySelectorAll('.archivo-item'));
-    const resultCount=document.getElementById('resultCount');
-
-    function formatCount(n){return n===0?'No hay resultados':n===1?'1 resultado':n+' resultados';}
-
-    function applyFilters(){
-      const q=(searchInput.value||'').trim().toLowerCase();
-      const from=dateFrom.value||null,to=dateTo.value||null;
-      let visible=0;
-
-      items.forEach(it=>{
-        const text=it.textContent.toLowerCase();
-        const date=it.dataset.date;
-        let show=true;
-
-        if(q && !text.includes(q)) show=false;
-        if(show && from && date<from) show=false;
-        if(show && to && date>to) show=false;
-
-        it.style.display=show?'block':'none';
-        visible+=show?1:0;
-      });
-
-      resultCount.textContent=formatCount(visible);
-    }
-
-    searchInput.addEventListener('input',()=>{
-      applyFilters();
-      const q=searchInput.value.trim().toLowerCase();
-      searchResults.innerHTML='';
-      if(!q){searchResults.style.display='none';return;}
-      const matches=items.filter(it=>it.textContent.toLowerCase().includes(q));
-      matches.slice(0,6).forEach(m=>{
-        const btn=document.createElement('button');
-        btn.textContent=m.querySelector('h4').textContent;
-        btn.onclick=()=>{
-          m.scrollIntoView({behavior:'smooth',block:'center'});
-          searchResults.style.display='none';
-          searchInput.value='';
-          applyFilters();
-        };
-        searchResults.appendChild(btn);
-      });
-      searchResults.style.display=matches.length?'block':'none';
-    });
-
-    btnFilter.addEventListener('click',e=>{e.preventDefault();applyFilters();});
-    btnClear.addEventListener('click',e=>{e.preventDefault();dateFrom.value='';dateTo.value='';searchInput.value='';applyFilters();searchResults.style.display='none';});
-
-    const acordions=document.querySelectorAll('.acordeon');
-    acordions.forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const expanded=btn.getAttribute('aria-expanded')==='true';
-        btn.setAttribute('aria-expanded',String(!expanded));
         const panel=btn.nextElementSibling;
         panel.style.display=panel.style.display==='block'?'none':'block';
       });
