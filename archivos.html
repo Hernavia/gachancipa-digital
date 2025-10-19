@@ -6,30 +6,9 @@
 <title>Archivos — Gachancipá</title>
 <link rel="stylesheet" href="style.css">
 <style>
-/* Acordeón estilo bloque resumen */
-.accordion-title {
-  cursor: pointer;
-  background-color: #f0f0f0;
-  border: 1px solid #000;
-  padding: 8px;
-  width: 100%;
-  text-align: left;
-  margin-top: 5px;
-  font-weight: bold;
-}
-.accordion-title:after {
-  content: '\002B';
-  float: right;
-}
-.accordion-title.active:after {
-  content: '\2212';
-}
-.accordion-content {
-  display: none;
-  padding: 8px;
-  border: 1px solid #000;
-  border-top: none;
-  margin-bottom: 5px;
+body {
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 /* Buscador estilo original */
@@ -47,6 +26,16 @@
   max-height: 200px;
   overflow-y: auto;
   width: 180px;
+}
+
+
+details {
+  margin-bottom: 10px;
+}
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
 }
 </style>
 </head>
@@ -90,7 +79,6 @@
   <article class="archivo-mes" data-month="2025-10">
     <h2>Octubre 2025</h2>
 
-    <!-- Archivo largo normal -->
     <div class="archivo-item" data-type="larga" data-date="2025-10-18" data-keywords="acta consejo cultura feria empresarial" tabindex="0">
       <h4>Acta 120: Feria Empresarial y espacio de Yukiherts</h4>
       <p class="meta">Alcaldía — 18/10/2025 — Documentos oficiales</p>
@@ -98,22 +86,17 @@
       <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver Página</a>
     </div>
 
-    <!-- Acordeón como bloque resumen -->
-    <div class="archivo-item" data-type="corta" data-date="2025-10-18" data-keywords="servicios agua corte" tabindex="0">
-      <div class="accordion-title">Compañía eléctrica: aviso de corte</div>
-      <div class="accordion-content">
-        <p class="meta">Servicios Públicos — 18/10/2025</p>
-        <p>Habrá suspensión del servicio entre las 8:00 y 14:00 por mantenimiento de la red eléctrica. Se recomienda a la comunidad tomar precauciones.</p>
-      </div>
-    </div>
+    <details class="archivo-item" data-type="corta" data-date="2025-10-18" data-keywords="servicios agua corte">
+      <summary>Compañía eléctrica: aviso de corte</summary>
+      <p class="meta">Servicios Públicos — 18/10/2025</p>
+      <p>Habrá suspensión del servicio entre las 8:00 y 14:00 por mantenimiento de la red eléctrica. Se recomienda a la comunidad tomar precauciones.</p>
+    </details>
 
-    <div class="archivo-item" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria" tabindex="0">
-      <div class="accordion-title">Reunión de Junta de Acción Comunal</div>
-      <div class="accordion-content">
-        <p class="meta">Comunidad — 10/10/2025</p>
-        <p>Todos los presidentes de JAC locales están invitados a la reunión del próximo martes a las 7:00 pm en el salón comunal.</p>
-      </div>
-    </div>
+    <details class="archivo-item" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria">
+      <summary>Reunión de Junta de Acción Comunal</summary>
+      <p class="meta">Comunidad — 10/10/2025</p>
+      <p>Todos los presidentes de JAC locales están invitados a la reunión del próximo martes a las 7:00 pm en el salón comunal.</p>
+    </details>
 
     <!-- Otro archivo largo normal -->
     <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres" tabindex="0">
@@ -131,7 +114,6 @@
 </footer>
 
 <script>
-// Filtrado por rango de fechas
 const btnFilter = document.getElementById('btnFilter');
 const btnClear = document.getElementById('btnClear');
 const dateFrom = document.getElementById('dateFrom');
@@ -170,17 +152,6 @@ btnClear.addEventListener('click', e=>{
   applyFilters();
 });
 
-// Acordeones dentro del mismo bloque
-const accordionTitles = document.querySelectorAll('.accordion-title');
-accordionTitles.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    btn.classList.toggle('active');
-    const content = btn.nextElementSibling;
-    content.style.display = content.style.display === 'block' ? 'none' : 'block';
-  });
-});
-
-// Barra de búsqueda (solo filtra por keywords y título)
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 
@@ -190,14 +161,14 @@ searchInput.addEventListener('input', ()=>{
   if(query.length === 0) return;
 
   const matches = items.filter(it=>{
-    return it.dataset.keywords.toLowerCase().includes(query) || 
-           (it.querySelector('h4') && it.querySelector('h4').textContent.toLowerCase().includes(query)) ||
-           (it.querySelector('.accordion-title') && it.querySelector('.accordion-title').textContent.toLowerCase().includes(query));
+    const title = it.querySelector('h4') ? it.querySelector('h4').textContent : it.querySelector('summary').textContent;
+    return it.dataset.keywords.toLowerCase().includes(query) || title.toLowerCase().includes(query);
   });
 
   matches.forEach(it=>{
     const div = document.createElement('div');
-    div.textContent = it.querySelector('h4') ? it.querySelector('h4').textContent : it.querySelector('.accordion-title').textContent;
+    const title = it.querySelector('h4') ? it.querySelector('h4').textContent : it.querySelector('summary').textContent;
+    div.textContent = title;
     div.style.cursor = 'pointer';
     div.addEventListener('click', ()=>{
       it.scrollIntoView({behavior: 'smooth'});
