@@ -3,149 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Archivos — Gachancipá Digital</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Archivos Municipales</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
+  <header>
+    <h1>Archivos Municipales</h1>
+  </header>
 
-<header>
-  <h1>Archivos Municipales</h1>
-  <p>Repositorio cívico de Gachancipá</p>
-</header>
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="archivos.html" class="active">Archivos</a></li>
+      <li><a href="proyectos.html">Proyectos</a></li>
+      <li><a href="cronicas.html">Crónicas</a></li>
+      <li><a href="aula.html">Aula Municipal</a></li>
+    </ul>
+  </nav>
 
-<nav class="navbar">
-  <ul>
-    <li><a href="index.html">Inicio</a></li>
-    <li><a href="archivos.html" class="active">Archivos</a></li>
-    <li><a href="proyectos.html">Proyectos</a></li>
-    <li><a href="educacion.html">Educación</a></li>
-    <li><a href="cronicas.html">Crónicas</a></li>
-    <li><a href="wiki.html">Wikipedia Local</a></li>
-    <li><a href="aula.html">Aula Municipal</a></li>
-    <li><a href="llamados.html">Llamados al Pueblo</a></li>
-  </ul>
-
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Buscar...">
-    <select id="filterDate">
-      <option value="todos">Todos los días</option>
-      <option value="2025-10-18">18 de octubre</option>
-      <option value="2025-10-12">12 de octubre</option>
-      <option value="2025-09-28">28 de septiembre</option>
-    </select>
-  </div>
-</nav>
-
-<main class="archivos-container">
-
-  <section class="archivo-mes" data-mes="octubre">
-    <h2>Octubre 2025</h2>
-
-    <div class="archivo-dia" data-dia="2025-10-18">
-      <h3>18 de octubre</h3>
-
-      <div class="archivo-item">
-        <h4>Actualización de la plataforma cívica</h4>
-        <p>Se incorporaron nuevas funciones para fortalecer la participación ciudadana.</p>
-        <a href="archivo-plataforma.html" class="btn-ver">Ver más</a>
-        <span class="indicador">🌐 Página individual</span>
-      </div>
-
-      <div class="archivo-item">
-        <button class="acordeon">Convocatoria de proyectos comunitarios</button>
-        <div class="panel">
-          <p>La Alcaldía abre convocatoria para iniciativas ambientales y de emprendimiento local 
-          con apoyo logístico y técnico.</p>
-        </div>
-        <span class="indicador">📄 Texto breve</span>
-      </div>
+  <main>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Buscar archivo...">
+      <select id="filterDate">
+        <option value="todos">Todos los meses</option>
+        <option value="septiembre">Septiembre 2025</option>
+        <option value="octubre">Octubre 2025</option>
+      </select>
     </div>
 
-    <div class="archivo-dia" data-dia="2025-10-12">
-      <h3>12 de octubre</h3>
+    <section class="archivos-container">
+      <div class="archivo-mes" data-mes="septiembre">
+        <h2><span class="flecha"></span>Septiembre 2025</h2>
 
-      <div class="archivo-item">
-        <h4>Informe cultural de la Semana de la Cultura</h4>
-        <p>Resumen de actividades artísticas y educativas realizadas en el municipio.</p>
-        <a href="archivo-cultura.html" class="btn-ver">Ver más</a>
-        <span class="indicador">🌐 Página individual</span>
-      </div>
-
-      <div class="archivo-item">
-        <button class="acordeon">Acta del Consejo Comunitario</button>
-        <div class="panel">
-          <p>Se aprobaron nuevos programas ambientales y educativos 
-          para fortalecer el tejido social del municipio.</p>
+        <div class="archivo-item">
+          <h4>Informe de Actividades Comunitarias</h4>
+          <p>Resumen de las jornadas ambientales y culturales realizadas en el municipio.</p>
+          <a href="archivo-septiembre1.html" class="btn-ver">Ver más</a>
         </div>
-        <span class="indicador">📄 Texto breve</span>
-      </div>
-    </div>
-  </section>
 
-  <section class="archivo-mes" data-mes="septiembre">
-    <h2>Septiembre 2025</h2>
-
-    <div class="archivo-dia" data-dia="2025-09-28">
-      <h3>28 de septiembre</h3>
-
-      <div class="archivo-item">
-        <h4>Convocatoria de voluntariado ambiental</h4>
-        <p>La Alcaldía invita a participar en el programa de recuperación ecológica local.</p>
-        <a href="archivo-voluntariado.html" class="btn-ver">Ver más</a>
-        <span class="indicador">🌐 Página individual</span>
-      </div>
-
-      <div class="archivo-item">
-        <button class="acordeon">Mantenimiento vial y señalización</button>
+        <button class="acordeon">Acta del Consejo Municipal</button>
         <div class="panel">
-          <p>Durante la última semana de septiembre se realizaron obras de mantenimiento 
-          en los barrios Santa Bárbara y Centro.</p>
+          <p>Documento oficial con las decisiones y acuerdos de la sesión ordinaria.</p>
+          <a href="archivo-septiembre2.html" class="btn-ver">Ver más</a>
         </div>
-        <span class="indicador">📄 Texto breve</span>
       </div>
-    </div>
-  </section>
 
-</main>
+      <div class="archivo-mes" data-mes="octubre">
+        <h2><span class="flecha"></span>Octubre 2025</h2>
 
-<footer>
-  <p>©2025 Gachancipá Digital — Plataforma cívica y documental</p>
-</footer>
+        <div class="archivo-item">
+          <h4>Feria Empresarial Local</h4>
+          <p>Registro de la feria de emprendimiento realizada en la plaza principal.</p>
+          <a href="archivo-octubre1.html" class="btn-ver">Ver más</a>
+        </div>
 
-<script>
-  // Acordeón
-  const accordions = document.querySelectorAll(".acordeon");
-  accordions.forEach(btn => {
-    btn.addEventListener("click", () => {
-      btn.classList.toggle("activo");
-      const panel = btn.nextElementSibling;
-      panel.style.display = panel.style.display === "block" ? "none" : "block";
+        <button class="acordeon">Presupuesto Participativo</button>
+        <div class="panel">
+          <p>Propuestas y distribución presupuestal para los proyectos ciudadanos.</p>
+          <a href="archivo-octubre2.html" class="btn-ver">Ver más</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Archivos Municipales | Gachancipá</p>
+  </footer>
+
+  <script>
+    const acordiones = document.querySelectorAll(".acordeon");
+    acordiones.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+        const panel = btn.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
     });
-  });
-
-  // Buscador y filtro
-  const searchInput = document.getElementById("searchInput");
-  const filterDate = document.getElementById("filterDate");
-  const dias = document.querySelectorAll(".archivo-dia");
-
-  function filtrar() {
-    const query = searchInput.value.toLowerCase();
-    const fecha = filterDate.value;
-    dias.forEach(dia => {
-      const coincideFecha = (fecha === "todos" || dia.dataset.dia === fecha);
-      const coincideTexto = dia.textContent.toLowerCase().includes(query);
-      dia.style.display = (coincideFecha && coincideTexto) ? "block" : "none";
-    });
-
-    document.querySelectorAll(".archivo-mes").forEach(mes => {
-      const visible = [...mes.querySelectorAll(".archivo-dia")].some(d => d.style.display === "block");
-      mes.style.display = visible ? "block" : "none";
-    });
-  }
-
-  searchInput.addEventListener("input", filtrar);
-  filterDate.addEventListener("change", filtrar);
-</script>
-
+  </script>
 </body>
 </html>
