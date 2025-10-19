@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Archivos — Gachancipá</title>
-  <meta name="description" content="Archivos municipales — búsqueda, noticias y documentos de Gachancipá.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -44,21 +43,21 @@
     <article class="archivo-mes" data-month="2025-10">
       <h2>Octubre 2025</h2>
 
-      <div class="archivo-item" data-type="larga" data-date="2025-10-18" data-keywords="acta consejo cultura feria empresarial" tabindex="0">
+      <div class="archivo-item" data-type="larga" data-date="2025-10-18" data-keywords="acta consejo cultura feria empresarial">
         <h4>Acta 120: Feria Empresarial y espacio de Yukiherts</h4>
-        <p class="meta">Alcaldía — 18/10/2025 — Documentos oficiales</p>
+        <p class="meta">Alcaldía — 18/10/2025</p>
         <p>Se habilitó un espacio para la feria empresarial donde participará Yukiherts.</p>
         <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver página</a>
       </div>
 
       <button class="acordeon" aria-expanded="false">Votaciones del día 15</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-15" data-keywords="votaciones" tabindex="0" style="display:none; background:#fff; border:1px solid #000; padding:10px;">
+      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-15" data-keywords="votaciones">
         <h4>Votaciones del día 15</h4>
         <p class="meta">15/10/2025</p>
-        <p>Se llevaron a cabo las votaciones locales, con participación de la comunidad y resultados preliminares.</p>
+        <p>Se llevaron a cabo las votaciones locales con participación de la comunidad y resultados preliminares.</p>
       </div>
 
-      <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres" tabindex="0">
+      <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres">
         <h4>Convocatoria: Talleres de educación cívica</h4>
         <p class="meta">Educación — 10/10/2025</p>
         <p>Se abren inscripciones para talleres dirigidos a colegios y líderes comunitarios.</p>
@@ -66,28 +65,10 @@
       </div>
 
       <button class="acordeon" aria-expanded="false">Reunión de Junta de Acción Comunal</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria" tabindex="0" style="display:none; background:#fff; border:1px solid #000; padding:10px;">
+      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal">
         <h4>Reunión de Junta de Acción Comunal</h4>
         <p class="meta">10/10/2025</p>
         <p>Convocatoria abierta para todos los presidentes de JAC locales — 7:00 pm en el salón comunal.</p>
-      </div>
-    </article>
-
-    <article class="archivo-mes" data-month="2025-09">
-      <h2>Septiembre 2025</h2>
-
-      <div class="archivo-item" data-type="larga" data-date="2025-09-30" data-keywords="memoria biblioteca patrimonio" tabindex="0">
-        <h4>Inauguración del archivo histórico local</h4>
-        <p class="meta">Cultura — 30/09/2025</p>
-        <p>Se inauguró el nuevo archivo histórico con materiales digitalizados y acceso público.</p>
-        <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver página</a>
-      </div>
-
-      <button class="acordeon" aria-expanded="false">Seminario de preservación</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-09-30" data-keywords="seminario preservacion archivos" tabindex="0" style="display:none; background:#fff; border:1px solid #000; padding:10px;">
-        <h4>Seminario de preservación</h4>
-        <p class="meta">30/09/2025</p>
-        <p>Seminario práctico para gestores de archivos y estudiantes.</p>
       </div>
     </article>
   </main>
@@ -97,76 +78,58 @@
   </footer>
 
   <script>
-    const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
-    const btnFilter = document.getElementById('btnFilter');
-    const btnClear = document.getElementById('btnClear');
-    const dateFrom = document.getElementById('dateFrom');
-    const dateTo = document.getElementById('dateTo');
-    const items = Array.from(document.querySelectorAll('.archivo-item'));
-    const resultCount = document.getElementById('resultCount');
+    const searchInput=document.getElementById('searchInput');
+    const searchResults=document.getElementById('searchResults');
+    const btnFilter=document.getElementById('btnFilter');
+    const btnClear=document.getElementById('btnClear');
+    const dateFrom=document.getElementById('dateFrom');
+    const dateTo=document.getElementById('dateTo');
+    const items=Array.from(document.querySelectorAll('.archivo-item'));
+    const resultCount=document.getElementById('resultCount');
 
-    function formatCount(n) {
-      return n === 0 ? 'No hay resultados' : n === 1 ? '1 resultado' : n + ' resultados';
-    }
+    function formatCount(n){return n===0?'No hay resultados':n===1?'1 resultado':n+' resultados';}
 
-    function applyFilters() {
-      const q = (searchInput.value || '').trim().toLowerCase();
-      const from = dateFrom.value || null, to = dateTo.value || null;
-      let visible = 0;
-
-      items.forEach(it => {
-        const text = it.textContent.toLowerCase();
-        const date = it.dataset.date;
-        let show = true;
-
-        if(q && !text.includes(q)) show = false;
-        if(show && from && date !== from) show = false;
-        if(show && to && date !== to) show = false;
-
-        it.style.display = show ? 'block' : 'none';
-        visible += show ? 1 : 0;
+    function applyFilters(){
+      const q=(searchInput.value||'').trim().toLowerCase();
+      const from=dateFrom.value||null, to=dateTo.value||null;
+      let visible=0;
+      items.forEach(it=>{
+        const text=it.textContent.toLowerCase();
+        const date=it.dataset.date;
+        let show=true;
+        if(q && !text.includes(q)) show=false;
+        if(show && from && date!==from) show=false;
+        if(show && to && date!==to) show=false;
+        it.style.display=show?'block':'none';
+        visible+=show?1:0;
       });
-
-      resultCount.textContent = formatCount(visible);
+      resultCount.textContent=formatCount(visible);
     }
 
-    searchInput.addEventListener('input', () => {
+    searchInput.addEventListener('input',()=>{
       applyFilters();
-      const q = searchInput.value.trim().toLowerCase();
-      searchResults.innerHTML = '';
-      if(!q){searchResults.style.display='none'; return;}
-      const matches = items.filter(it => it.textContent.toLowerCase().includes(q));
-      matches.slice(0,6).forEach(m => {
-        const btn = document.createElement('button');
-        btn.textContent = m.querySelector('h4').textContent;
-        btn.onclick = () => {
-          m.scrollIntoView({behavior:'smooth',block:'center'});
-          searchResults.style.display='none';
-          searchInput.value='';
-          applyFilters();
-        };
+      const q=searchInput.value.trim().toLowerCase();
+      searchResults.innerHTML='';
+      if(!q){searchResults.style.display='none';return;}
+      const matches=items.filter(it=>it.textContent.toLowerCase().includes(q));
+      matches.slice(0,6).forEach(m=>{
+        const btn=document.createElement('button');
+        btn.textContent=m.querySelector('h4').textContent;
+        btn.onclick=()=>{m.scrollIntoView({behavior:'smooth',block:'center'});searchResults.style.display='none';searchInput.value='';applyFilters();};
         searchResults.appendChild(btn);
       });
-      searchResults.style.display = matches.length ? 'block' : 'none';
+      searchResults.style.display=matches.length?'block':'none';
     });
 
-    btnFilter.addEventListener('click', e => { e.preventDefault(); applyFilters(); });
-    btnClear.addEventListener('click', e => {
-      e.preventDefault();
-      dateFrom.value = '';
-      dateTo.value = '';
-      searchInput.value = '';
-      applyFilters();
-      searchResults.style.display='none';
-    });
+    btnFilter.addEventListener('click', e=>{e.preventDefault();applyFilters();});
+    btnClear.addEventListener('click', e=>{e.preventDefault();dateFrom.value='';dateTo.value='';searchInput.value='';applyFilters();searchResults.style.display='none';});
 
-    const acordions = document.querySelectorAll('.acordeon');
-    acordions.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const panel = btn.nextElementSibling;
-        if (!panel) return;
-        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    const acordions=document.querySelectorAll('.acordeon');
+    acordions.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const panel=btn.nextElementSibling;
+        if(!panel) return;
+        panel.style.display=(panel.style.display==='block')?'none':'block';
       });
     });
 
