@@ -5,6 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Archivos — Gachancipá</title>
 <link rel="stylesheet" href="style.css">
+<style>
+/* Estilos básicos para acordeón dentro del mismo bloque */
+.acordeon {
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: 1px solid #000;
+  padding: 8px;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  margin-top: 5px;
+}
+.acordeon:after {
+  content: '\002B';
+  float: right;
+}
+.acordeon.active:after {
+  content: '\2212';
+}
+.acordeon-content {
+  display: none;
+  padding: 8px;
+  border: 1px solid #000;
+  border-top: none;
+  margin-bottom: 5px;
+}
+
+/* Barra de búsqueda */
+.search-container {
+  margin-left: auto;
+}
+#searchInput {
+  padding: 5px;
+  width: 200px;
+}
+#searchResults {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #000;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 200px;
+}
+</style>
 </head>
 <body>
 <header>
@@ -23,6 +67,10 @@
     <li><a href="llamados.html">Llamados al Pueblo</a></li>
     <li><a href="wikigacha.html">Enciclopedia Gachancipeña</a></li>
   </ul>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Buscar...">
+    <div id="searchResults"></div>
+  </div>
 </nav>
 
 <main class="archivos-container" id="archivosApp">
@@ -49,11 +97,14 @@
       <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver Página</a>
     </div>
 
-    <button class="acordeon">Compañía eléctrica: aviso de corte</button>
-    <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-18" data-keywords="servicios agua corte" tabindex="0">
-      <h4>Corte de energía programado</h4>
+    <div class="archivo-item" data-type="corta" data-date="2025-10-18" data-keywords="servicios agua corte" tabindex="0">
+      <h4>Compañía eléctrica: aviso de corte</h4>
       <p class="meta">Servicios Públicos — 18/10/2025</p>
       <p>Habrá suspensión del servicio entre las 8:00 y 14:00 por mantenimiento de la red eléctrica. Se recomienda a la comunidad tomar precauciones.</p>
+      <button class="acordeon">Ver explicación</button>
+      <div class="acordeon-content">
+        <p>Este aviso es solo informativo y no requiere acción inmediata más allá de las precauciones normales.</p>
+      </div>
     </div>
 
     <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres" tabindex="0">
@@ -63,11 +114,14 @@
       <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver Página</a>
     </div>
 
-    <button class="acordeon">Reunión de Junta de Acción Comunal</button>
-    <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria" tabindex="0">
-      <h4>Convocatoria a reunión</h4>
+    <div class="archivo-item" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria" tabindex="0">
+      <h4>Reunión de Junta de Acción Comunal</h4>
       <p class="meta">Comunidad — 10/10/2025</p>
       <p>Todos los presidentes de JAC locales están invitados a la reunión del próximo martes a las 7:00 pm en el salón comunal.</p>
+      <button class="acordeon">Ver explicación</button>
+      <div class="acordeon-content">
+        <p>La reunión tiene como objetivo planificar actividades comunitarias del mes.</p>
+      </div>
     </div>
 
   </article>
@@ -78,18 +132,19 @@
 </footer>
 
 <script>
+// Filtrado por rango de fechas
 const btnFilter = document.getElementById('btnFilter');
 const btnClear = document.getElementById('btnClear');
 const dateFrom = document.getElementById('dateFrom');
 const dateTo = document.getElementById('dateTo');
-const items = Array.from(document.querySelectorAll('.archivo-item, .panel'));
+const items = Array.from(document.querySelectorAll('.archivo-item'));
 const resultCount = document.getElementById('resultCount');
 
 function formatCount(n){return n===0?'No hay resultados':n===1?'1 resultado':n+' resultados';}
 
 function applyFilters(){
-  const from = dateFrom.value || null;
-  const to = dateTo.value || null;
+  const from = dateFrom.value;
+  const to = dateTo.value;
   let visible = 0;
 
   items.forEach(it=>{
@@ -116,11 +171,38 @@ btnClear.addEventListener('click', e=>{
   applyFilters();
 });
 
+// Acordeones dentro del mismo bloque
 const acordions = document.querySelectorAll('.acordeon');
 acordions.forEach(btn=>{
   btn.addEventListener('click', ()=>{
-    const panel = btn.nextElementSibling;
-    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    btn.classList.toggle('active');
+    const content = btn.nextElementSibling;
+    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+  });
+});
+
+// Barra de búsqueda (solo filtra por keywords)
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+searchInput.addEventListener('input', ()=>{
+  const query = searchInput.value.toLowerCase();
+  searchResults.innerHTML = '';
+  if(query.length === 0) return;
+
+  const matches = items.filter(it=>{
+    return it.dataset.keywords.toLowerCase().includes(query) || it.querySelector('h4').textContent.toLowerCase().includes(query);
+  });
+
+  matches.forEach(it=>{
+    const div = document.createElement('div');
+    div.textContent = it.querySelector('h4').textContent;
+    div.style.cursor = 'pointer';
+    div.addEventListener('click', ()=>{
+      it.scrollIntoView({behavior: 'smooth'});
+      it.style.border = '2px solid #006a44';
+    });
+    searchResults.appendChild(div);
   });
 });
 </script>
