@@ -4,24 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Archivos — Gachancipá</title>
-  <meta name="description" content="Archivos municipales — búsqueda, filtro por fecha, noticias, noticias cortas plegables.">
+  <meta name="description" content="Archivos municipales — búsqueda y filtro por fecha.">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Pequeños ajustes locales para esta página (no sobrescriben tu style.css) */
-    .filtros { display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:center; margin: 18px 0; }
-    .filtros input[type="date"] { padding:8px; border-radius:8px; border:1px solid #078930; }
-    .filtros .controls { display:flex; gap:8px; align-items:center; }
-    .result-count { text-align:center; margin-top:6px; color:#333; }
-    .archivo-mes { margin-top: 30px; }
-    .meta { font-size:0.85rem; color:#555; }
-    .archivo-item--short .btn-ver { background:#f9db0c; color:#000; border:2px solid #000; }
-    .archivo-item--short .btn-ver:hover { background:#f6d000; }
-  </style>
 </head>
 <body>
   <header>
     <h1>Archivos municipales</h1>
-    <div class="header-box"><p>Repositorio — Gachancipá (demo)</p></div>
+    <div class="header-box"><p>Repositorio — Gachancipá</p></div>
   </header>
 
   <nav class="navbar">
@@ -30,8 +19,9 @@
       <li><a href="archivos.html" class="active">Archivos</a></li>
       <li><a href="proyectos.html">Proyectos</a></li>
       <li><a href="educacion.html">Educación</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
     </ul>
-    <div class="search-container" style="margin-left:12px;">
+    <div class="search-container">
       <input type="text" id="searchInputFiles" placeholder="Buscar en archivos...">
       <div id="searchResultsFiles"></div>
     </div>
@@ -49,48 +39,43 @@
           <input type="date" id="dateTo">
         </div>
         <div class="controls">
-          <button id="btnFilter">Filtrar</button>
-          <button id="btnClear">Limpiar</button>
+          <button id="btnFilter" class="btn-filtro">Filtrar</button>
+          <button id="btnClear" class="btn-filtro">Limpiar</button>
         </div>
       </div>
       <div class="result-count" id="resultCount">Mostrando todas las noticias</div>
     </section>
 
-    <!-- ======= Mes: Octubre 2025 ======= -->
     <article class="archivo-mes" data-month="2025-10">
       <h2>Octubre 2025</h2>
 
       <div class="archivo-dia" data-day="2025-10-18">
-        <h3><span class="flecha"></span> 18 de octubre de 2025</h3>
+        <h3>18 de octubre de 2025</h3>
 
-        <!-- Noticia larga con página individual -->
         <div class="archivo-item" data-type="larga" data-date="2025-10-18" data-keywords="acta consejo cultura feria empresarial" tabindex="0">
           <h4>Acta 120: Feria Empresarial y espacio de Yukiherts</h4>
           <p class="meta">Alcaldía — 18/10/2025 — Documentos oficiales</p>
-          <p>Resumen: Se habilitó un espacio para la feria empresarial donde participará Yukiherts. <!-- texto de prueba --></p>
-          <a class="btn-ver" href="noticia.html?id=120" title="Abrir noticia completa">Ver noticia</a>
-          <span class="indicador">Etiqueta: Feria · Alcaldía</span>
+          <p>Se habilitó un espacio para la feria empresarial donde participará Yukiherts.</p>
+          <a class="btn-ver" href="noticia.html?id=120">Ver noticia</a>
         </div>
 
-        <!-- Noticia corta plegable -->
         <button class="acordeon" aria-expanded="false">Comunicado breve: Corte de agua programado</button>
         <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-18" data-keywords="servicios agua corte" tabindex="0">
           <h4>Corte de agua programado</h4>
           <p class="meta">Servicios Públicos — 18/10/2025</p>
           <p>Habrá suspensión del servicio entre las 8:00 y 14:00 por mantenimiento en la red.</p>
-          <a class="btn-ver" href="#" title="No tiene página individual" onclick="return false;">Ver más</a>
+          <a class="btn-ver" href="#">Ver más</a>
         </div>
-
       </div>
 
       <div class="archivo-dia" data-day="2025-10-10">
-        <h3><span class="flecha"></span> 10 de octubre de 2025</h3>
+        <h3>10 de octubre de 2025</h3>
 
         <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres" tabindex="0">
           <h4>Convocatoria: Talleres de educación cívica</h4>
           <p class="meta">Educación — 10/10/2025</p>
           <p>Se abren inscripciones para talleres dirigidos a colegios y líderes comunitarios.</p>
-          <a class="btn-ver" href="noticia.html?id=101" title="Abrir noticia completa">Ver noticia</a>
+          <a class="btn-ver" href="noticia.html?id=101">Ver noticia</a>
         </div>
 
         <button class="acordeon" aria-expanded="false">Aviso breve: Reunión de Junta de Acción Comunal</button>
@@ -98,18 +83,16 @@
           <h4>Reunión de Junta de Acción Comunal</h4>
           <p class="meta">Comunidad — 10/10/2025</p>
           <p>Convocatoria abierta para todos los presidentes de JAC locales — 7:00 pm en el salón comunal.</p>
-          <a class="btn-ver" href="#" onclick="return false;">Ver más</a>
+          <a class="btn-ver" href="#">Ver más</a>
         </div>
-
       </div>
     </article>
 
-    <!-- ======= Mes: Septiembre 2025 ======= -->
     <article class="archivo-mes" data-month="2025-09">
       <h2>Septiembre 2025</h2>
 
       <div class="archivo-dia" data-day="2025-09-30">
-        <h3><span class="flecha"></span> 30 de septiembre de 2025</h3>
+        <h3>30 de septiembre de 2025</h3>
 
         <div class="archivo-item" data-type="larga" data-date="2025-09-30" data-keywords="memoria biblioteca patrimonio" tabindex="0">
           <h4>Inauguración del archivo histórico local</h4>
@@ -123,20 +106,17 @@
           <h4>Seminario de preservación</h4>
           <p class="meta">Cultura — 30/09/2025</p>
           <p>Seminario práctico para gestores de archivos y estudiantes.</p>
-          <a class="btn-ver" href="#" onclick="return false;">Ver más</a>
+          <a class="btn-ver" href="#">Ver más</a>
         </div>
-
       </div>
     </article>
-
   </main>
 
   <footer>
-    <p>©2025 Hernavia — Archivos de Gachancipá (demo)</p>
+    <p>©2025 Hernavia — Archivos de Gachancipá</p>
   </footer>
 
   <script>
-    // --- Búsqueda dinámica con filtrado por fechas ---
     const searchInput = document.getElementById('searchInputFiles');
     const searchResults = document.getElementById('searchResultsFiles');
     const btnFilter = document.getElementById('btnFilter');
@@ -146,105 +126,76 @@
     const items = Array.from(document.querySelectorAll('.archivo-item'));
     const resultCount = document.getElementById('resultCount');
 
-    function formatCount(n) {
-      if(n === 0) return 'No hay resultados';
-      if(n === 1) return '1 resultado';
-      return n + ' resultados';
-    }
-
+    function formatCount(n){return n===0?'No hay resultados':n===1?'1 resultado':n+' resultados';}
     function applyFilters(){
-      const q = (searchInput.value || '').trim().toLowerCase();
-      const from = dateFrom.value || null;
-      const to = dateTo.value || null;
-
-      let visible = 0;
-      items.forEach(it => {
-        const title = it.querySelector('h4')?.textContent?.toLowerCase() || '';
-        const keywords = (it.dataset.keywords || '').toLowerCase();
-        const date = it.dataset.date || '';
-        let match = true;
-
-        if(q) {
-          match = title.includes(q) || keywords.includes(q) || it.textContent.toLowerCase().includes(q);
+      const q=(searchInput.value||'').trim().toLowerCase();
+      const from=dateFrom.value||null,to=dateTo.value||null;
+      let visible=0;
+      items.forEach(it=>{
+        const title=it.querySelector('h4')?.textContent?.toLowerCase()||'';
+        const keywords=(it.dataset.keywords||'').toLowerCase();
+        const date=it.dataset.date||'';
+        let match=true;
+        if(q)match=title.includes(q)||keywords.includes(q)||it.textContent.toLowerCase().includes(q);
+        if(match&&from)match=date>=from;
+        if(match&&to)match=date<=to;
+        it.style.display=match?'':'none';
+        const day=it.closest('.archivo-dia');
+        if(day){
+          const otherVisible=Array.from(day.querySelectorAll('.archivo-item')).some(x=>x.style.display!=='none');
+          day.style.display=otherVisible?'':'none';
         }
-
-        if(match && from) {
-          match = date >= from;
-        }
-        if(match && to) {
-          match = date <= to;
-        }
-
-        it.style.display = match ? '' : 'none';
-        // hide parent day/mes containers if no children visible
-        const day = it.closest('.archivo-dia');
-        if(day) {
-          const otherVisible = Array.from(day.querySelectorAll('.archivo-item')).some(x => x.style.display !== 'none');
-          day.style.display = otherVisible ? '' : 'none';
-        }
-        visible += match ? 1 : 0;
+        visible+=match?1:0;
       });
-
-      // hide months without visible days
-      const months = Array.from(document.querySelectorAll('.archivo-mes'));
-      months.forEach(m => {
-        const anyDayVisible = Array.from(m.querySelectorAll('.archivo-dia')).some(d => d.style.display !== 'none');
-        m.style.display = anyDayVisible ? '' : 'none';
+      const months=Array.from(document.querySelectorAll('.archivo-mes'));
+      months.forEach(m=>{
+        const anyDayVisible=Array.from(m.querySelectorAll('.archivo-dia')).some(d=>d.style.display!=='none');
+        m.style.display=anyDayVisible?'':'none';
       });
-
-      resultCount.textContent = formatCount(visible);
+      resultCount.textContent=formatCount(visible);
     }
 
-    // Búsqueda en vivo
-    searchInput.addEventListener('input', () => {
+    searchInput.addEventListener('input',()=>{
       applyFilters();
-      // Sugerencias simples
-      const q = searchInput.value.trim().toLowerCase();
-      searchResults.innerHTML = '';
-      if(!q) { searchResults.style.display = 'none'; return; }
-      const matches = items.filter(it => (it.dataset.keywords + ' ' + it.querySelector('h4')?.textContent).toLowerCase().includes(q));
-      matches.slice(0,6).forEach(m => {
-        const btn = document.createElement('button');
-        btn.textContent = m.querySelector('h4').textContent;
-        btn.onclick = () => { m.scrollIntoView({behavior:'smooth'}); searchResults.style.display='none'; searchInput.value=''; applyFilters(); };
+      const q=searchInput.value.trim().toLowerCase();
+      searchResults.innerHTML='';
+      if(!q){searchResults.style.display='none';return;}
+      const matches=items.filter(it=>(it.dataset.keywords+' '+it.querySelector('h4')?.textContent).toLowerCase().includes(q));
+      matches.slice(0,6).forEach(m=>{
+        const btn=document.createElement('button');
+        btn.textContent=m.querySelector('h4').textContent;
+        btn.onclick=()=>{m.scrollIntoView({behavior:'smooth'});searchResults.style.display='none';searchInput.value='';applyFilters();};
         searchResults.appendChild(btn);
       });
-      searchResults.style.display = matches.length ? 'block' : 'none';
+      searchResults.style.display=matches.length?'block':'none';
     });
 
-    btnFilter.addEventListener('click', (e) => { e.preventDefault(); applyFilters(); });
-    btnClear.addEventListener('click', (e) => { e.preventDefault(); dateFrom.value=''; dateTo.value=''; searchInput.value=''; applyFilters(); searchResults.style.display='none'; });
+    btnFilter.addEventListener('click',e=>{e.preventDefault();applyFilters();});
+    btnClear.addEventListener('click',e=>{e.preventDefault();dateFrom.value='';dateTo.value='';searchInput.value='';applyFilters();searchResults.style.display='none';});
 
-    // Inicializar acordeones (noticias cortas plegables)
-    const acordions = Array.from(document.querySelectorAll('.acordeon'));
-    acordions.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!expanded));
-        const panel = btn.nextElementSibling;
-        if(!panel) return;
-        if(!expanded) {
-          panel.style.display = 'block';
-          panel.setAttribute('aria-hidden', 'false');
-        } else {
-          panel.style.display = 'none';
-          panel.setAttribute('aria-hidden', 'true');
+    const acordions=Array.from(document.querySelectorAll('.acordeon'));
+    acordions.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const expanded=btn.getAttribute('aria-expanded')==='true';
+        btn.setAttribute('aria-expanded',String(!expanded));
+        const panel=btn.nextElementSibling;
+        if(!panel)return;
+        if(!expanded){panel.style.display='block';panel.setAttribute('aria-hidden','false');}
+        else{panel.style.display='none';panel.setAttribute('aria-hidden','true');}
+      });
+    });
+
+    items.forEach(it=>{
+      it.addEventListener('keypress',e=>{
+        if(e.key==='Enter'){
+          const link=it.querySelector('.btn-ver');
+          if(link&&link.href&& !link.getAttribute('onclick'))window.location=link.href;
         }
       });
     });
 
-    // Soporte para teclado: Enter en items abre su link (si tiene)
-    items.forEach(it => {
-      it.addEventListener('keypress', (e) => {
-        if(e.key === 'Enter') {
-          const link = it.querySelector('.btn-ver');
-          if(link && link.href && !link.getAttribute('onclick')) window.location = link.href;
-        }
-      });
-    });
-
-    // Al cargar, aplicar filtros (para respetar valores en inputs si los hay)
     applyFilters();
   </script>
 </body>
 </html>
+
