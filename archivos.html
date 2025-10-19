@@ -48,14 +48,14 @@
         <h4>Acta 120: Feria Empresarial y espacio de Yukiherts</h4>
         <p class="meta">Alcaldía — 18/10/2025 — Documentos oficiales</p>
         <p>Se habilitó un espacio para la feria empresarial donde participará Yukiherts.</p>
-        <a href="https://hernavia.github.io/gachancipa-digital/archivos.html/#pagina" class="btn-ver">Ver página</a>
+        <a href="https://hernavia.github.io/gachancipa-digital/archivos.html" class="btn-ver">Ver página</a>
       </div>
 
-      <div class="acordeon">
-        <button class="acordeon-btn">Corte de agua programado</button>
+      <div class="acordeon" data-date="2025-10-18" data-keywords="votaciones elecciones consejo">
+        <h4>Votaciones del día 15</h4>
         <div class="acordeon-content">
-          <p class="meta">Servicios Públicos — 18/10/2025</p>
-          <p>Suspensión del servicio entre las 8:00 y 14:00 por mantenimiento en la red.</p>
+          <p class="meta">Alcaldía — 18/10/2025</p>
+          <p>Resultados parciales de las votaciones realizadas en los barrios del municipio.</p>
         </div>
       </div>
 
@@ -63,11 +63,11 @@
         <h4>Convocatoria: Talleres de educación cívica</h4>
         <p class="meta">Educación — 10/10/2025</p>
         <p>Se abren inscripciones para talleres dirigidos a colegios y líderes comunitarios.</p>
-        <a href="https://hernavia.github.io/gachancipa-digital/archivos.html/#pagina" class="btn-ver">Ver página</a>
+        <a href="https://hernavia.github.io/gachancipa-digital/archivos.html" class="btn-ver">Ver página</a>
       </div>
 
-      <div class="acordeon">
-        <button class="acordeon-btn">Reunión de Junta de Acción Comunal</button>
+      <div class="acordeon" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria">
+        <h4>Reunión de Junta de Acción Comunal</h4>
         <div class="acordeon-content">
           <p class="meta">Comunidad — 10/10/2025</p>
           <p>Convocatoria abierta para presidentes de JAC locales — 7:00 pm en el salón comunal.</p>
@@ -82,11 +82,11 @@
         <h4>Inauguración del archivo histórico local</h4>
         <p class="meta">Cultura — 30/09/2025</p>
         <p>Se inauguró el nuevo archivo histórico con materiales digitalizados y acceso público.</p>
-        <a href="https://hernavia.github.io/gachancipa-digital/archivos.html/#pagina" class="btn-ver">Ver página</a>
+        <a href="https://hernavia.github.io/gachancipa-digital/archivos.html" class="btn-ver">Ver página</a>
       </div>
 
-      <div class="acordeon">
-        <button class="acordeon-btn">Seminario de preservación</button>
+      <div class="acordeon" data-date="2025-09-30" data-keywords="seminario preservacion archivos">
+        <h4>Seminario de preservación</h4>
         <div class="acordeon-content">
           <p class="meta">Cultura — 30/09/2025</p>
           <p>Seminario práctico para gestores de archivos y estudiantes.</p>
@@ -117,12 +117,10 @@
 
       items.forEach(it=>{
         const text=it.textContent.toLowerCase();
-        const itDate=it.dataset?.date||it.querySelector('.meta')?.textContent.match(/\d{4}-\d{2}-\d{2}/)?.[0]||'';
+        const itDate=it.dataset?.date||'';
         let show=true;
-
         if(q && !text.includes(q)) show=false;
         if(show && date && itDate!==date) show=false;
-
         it.style.display=show?'block':'none';
         visible+=show?1:0;
       });
@@ -138,7 +136,8 @@
       const matches=items.filter(it=>it.textContent.toLowerCase().includes(q));
       matches.slice(0,6).forEach(m=>{
         const btn=document.createElement('button');
-        btn.textContent=m.querySelector('h4')?m.querySelector('h4').textContent:m.querySelector('.acordeon-btn').textContent;
+        const h4=m.querySelector('h4');
+        btn.textContent=h4?h4.textContent:'Noticia';
         btn.onclick=()=>{
           m.scrollIntoView({behavior:'smooth',block:'center'});
           searchResults.style.display='none';
@@ -153,11 +152,13 @@
     btnFilter.addEventListener('click',e=>{e.preventDefault();applyFilters();});
     btnClear.addEventListener('click',e=>{e.preventDefault();dateFilter.value='';searchInput.value='';applyFilters();searchResults.style.display='none';});
 
-    document.querySelectorAll('.acordeon-btn').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const content=btn.nextElementSibling;
+    document.querySelectorAll('.acordeon').forEach(ac=>{
+      const content=ac.querySelector('.acordeon-content');
+      content.style.display='none';
+      ac.addEventListener('click',()=>{
         const expanded=content.style.display==='block';
         content.style.display=expanded?'none':'block';
+        ac.classList.toggle('abierto',!expanded);
       });
     });
 
