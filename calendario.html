@@ -30,22 +30,25 @@
   </div>
 </nav>
 
-<section class="search-controls">
-  <h2>Filtrar eventos</h2>
-  <div class="filtros">
-    <label for="dateFrom">Desde</label>
-    <input type="date" id="dateFrom">
-    <label for="dateTo">Hasta</label>
-    <input type="date" id="dateTo">
-    <button id="btnFilter" class="filter-btn">Filtrar</button>
-    <button id="btnClear" class="clear-btn">Limpiar</button>
-  </div>
-  <div class="result-count" id="resultCount">Mostrando todos los eventos</div>
-</section>
+<main class="archivos-container">
+
+  <!-- Sección de filtros por fecha -->
+  <section class="search-controls">
+    <h2>Filtrar eventos</h2> 
+    <div class="filtros">
+      <label for="dateFrom">Desde</label>
+      <input type="date" id="dateFrom">
+      <label for="dateTo">Hasta</label>
+      <input type="date" id="dateTo">
+      <button id="btnFilter" class="filter-btn">Filtrar</button>
+      <button id="btnClear" class="clear-btn">Limpiar</button>
+    </div>
+    <div class="result-count" id="resultCount">Mostrando todos los eventos</div>
+  </section>
 
   <article class="archivo-mes" data-month="2025-10">
     <h2>Octubre 2025</h2>
-
+  
     <details class="archivo-item" data-date="2025-10-31" data-keywords="feria empresarial">
       <summary>31/10 — Feria Empresarial</summary>
       <p class="meta">Evento: Feria Empresarial — 31/10/2025</p>
@@ -54,7 +57,8 @@
     </details>
 
   </article>
-</main>
+
+</main> 
 
 <footer>
   <p>©2025 — Calendario Municipal de Gachancipá</p>
