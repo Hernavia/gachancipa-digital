@@ -3,249 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Archivos municipales de Gachancipá — Documentos, comunicados y registros organizados por mes y tema.">
-  <title>Archivos | Gachancipá — Plataforma Cívica</title>
+  <title>Archivos — Gachancipá Digital</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #ffffff;
-      color: #000;
-    }
-
-    /* --- CABECERA --- */
-    header {
-      background: linear-gradient(to right, #006A44 60%, #F9DB0C 40%);
-      color: #000;
-      text-align: center;
-      padding: 1rem;
-      border-bottom: 3px solid #000;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    header p {
-      margin: 0.5rem 0 0;
-      font-size: 1.05rem;
-    }
-
-    /* --- NAVBAR --- */
-    nav.navbar {
-      background: #fff;
-      border-bottom: 3px solid #000;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      padding: 0.5rem;
-      gap: 1rem;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding: 0;
-      margin: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #000;
-      padding: 0.4rem 0.8rem;
-      border: 2px solid transparent;
-    }
-
-    nav a.active {
-      border: 2px solid #F9DB0C;
-      border-radius: 6px;
-    }
-
-    .search-container {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    input, select {
-      padding: 0.4rem;
-      border: 2px solid #000;
-      border-radius: 6px;
-      background: #f2f2f2;
-      color: #000;
-    }
-
-    /* --- CONTENIDO --- */
-    main {
-      padding: 1.5rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    main h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      border-left: 6px solid #006A44;
-      padding-left: 0.6rem;
-    }
-
-    .archivo-dia {
-      margin-bottom: 2rem;
-    }
-
-    .archivo-dia h3 {
-      font-size: 1.2rem;
-      color: #006A44;
-      border-left: 4px solid #F9DB0C;
-      padding-left: 0.5rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .archivo-item {
-      background: #f3f3f3;
-      border: 2px solid #000;
-      border-radius: 6px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .archivo-item h4 {
-      margin: 0 0 0.4rem;
-      color: #000;
-    }
-
-    .archivo-item p {
-      margin: 0.3rem 0 0.8rem;
-      color: #000;
-    }
-
-    .btn-ver {
-      display: inline-block;
-      background: #F9DB0C;
-      border: 2px solid #000;
-      color: #000;
-      text-decoration: none;
-      padding: 0.3rem 0.8rem;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-
-    .indicador {
-      display: block;
-      font-size: 0.9rem;
-      color: #000;
-      margin-top: 0.3rem;
-    }
-
-    button.acordeon {
-      background: #f3f3f3;
-      border: 2px solid #000;
-      border-radius: 6px;
-      padding: 0.8rem;
-      width: 100%;
-      text-align: left;
-      font-weight: bold;
-      color: #000;
-      cursor: pointer;
-    }
-
-    .panel {
-      display: none;
-      padding: 0.8rem;
-      background: #f7f7f7;
-      border: 2px solid #000;
-      border-radius: 6px;
-      margin-top: 0.5rem;
-    }
-
-    /* --- PIE DE PÁGINA --- */
-    footer {
-      background: #006A44;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      border-top: 3px solid #000;
-    }
-  </style>
 </head>
 <body>
 
 <header>
   <h1>Archivos Municipales</h1>
-  <p>Documentos, comunicados y registros de la comunidad</p>
+  <div class="header-box">
+    <p>Repositorio cívico de Hernavia — Gachancipá</p>
+  </div>
 </header>
 
 <nav class="navbar">
   <ul>
-    <li><a href="index.html">Inicio</a></li>
+    <li><a href="https://hernavia.github.io/gachancipa-digital/">Inicio</a></li>
     <li><a href="archivos.html" class="active">Archivos</a></li>
-    <li><a href="calendario.html">Calendario</a></li>
-    <li><a href="educacion.html">Educación</a></li>
-    <li><a href="cronicas.html">Crónicas</a></li>
     <li><a href="proyectos.html">Proyectos</a></li>
-    <li><a href="wikipedia.html">Wikipedia Local</a></li>
-    <li><a href="llamados.html">Llamados al Pueblo</a></li>
+    <li><a href="educacion.html">Educación</a></li>
   </ul>
   <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Buscar archivos o temas...">
+    <input type="text" id="searchInput" placeholder="Buscar...">
     <select id="filterDate">
-      <option value="all">Todos los meses</option>
-      <option value="octubre">Octubre</option>
-      <option value="septiembre">Septiembre</option>
+      <option value="todos">Todos los días</option>
+      <option value="2025-10-18">18 de octubre</option>
+      <option value="2025-10-12">12 de octubre</option>
     </select>
+    <div id="searchResults"></div>
   </div>
 </nav>
 
-<main>
+<main class="archivos-container">
 
   <section class="archivo-mes" data-mes="octubre">
     <h2>Octubre 2025</h2>
 
-    <div class="archivo-dia" data-date="14 octubre">
-      <h3>14 de octubre</h3>
-      <div class="archivo-item" data-keywords="feria empresarial participación ciudadana">
-        <h4>Comunicado sobre la Feria Empresarial</h4>
-        <p>Actualización sobre los preparativos y participación ciudadana en la feria municipal.</p>
-        <a href="archivo-feria.html" class="btn-ver">Ver más</a>
-        <span class="indicador">🌐 Página individual</span>
+    <div class="archivo-dia" data-dia="2025-10-18">
+      <h3><span class="flecha"></span>18 de octubre</h3>
+
+      <div class="archivo-item">
+        <h4>Actualización de la plataforma cívica</h4>
+        <p>Se integraron las nuevas funciones de búsqueda y filtrado automático para mejorar la consulta de documentos.</p>
+        <a href="archivo1.html" class="btn-ver">Ver documento</a>
+        <span class="indicador">Archivo interno — categoría: innovación</span>
       </div>
 
-      <div class="archivo-item" data-keywords="mantenimiento vial obras barrios">
-        <button class="acordeon">Informe de mantenimiento vial</button>
-        <div class="panel">
-          <p>Durante la primera semana de octubre se realizaron obras menores en los barrios Santa Bárbara y Centro.</p>
-        </div>
-        <span class="indicador">📄 Texto breve</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="archivo-mes" data-mes="septiembre">
-    <h2>Septiembre 2025</h2>
-
-    <div class="archivo-dia" data-date="20 septiembre">
-      <h3>20 de septiembre</h3>
-      <div class="archivo-item" data-keywords="voluntariado ambiental ecologia programa">
-        <h4>Convocatoria de voluntariado ambiental</h4>
-        <p>La Alcaldía invita a participar en el programa de recuperación ecológica local.</p>
-        <a href="archivo-voluntariado.html" class="btn-ver">Ver más</a>
-        <span class="indicador">🌐 Página individual</span>
+      <button class="acordeon">Más detalles</button>
+      <div class="panel">
+        <p>Este archivo describe la evolución técnica de la plataforma municipal digital, incluyendo estructura y compatibilidad.</p>
       </div>
     </div>
 
-    <div class="archivo-dia" data-date="12 septiembre">
-      <h3>12 de septiembre</h3>
-      <div class="archivo-item" data-keywords="acta consejo comunitario educacion">
-        <button class="acordeon">Acta del Consejo Comunitario 12-09</button>
-        <div class="panel">
-          <p>Se discutieron temas de educación cívica, presupuesto participativo y proyectos juveniles.</p>
-        </div>
-        <span class="indicador">📄 Texto breve</span>
+    <div class="archivo-dia" data-dia="2025-10-12">
+      <h3><span class="flecha"></span>12 de octubre</h3>
+
+      <div class="archivo-item">
+        <h4>Acta del consejo comunitario</h4>
+        <p>Resumen de las decisiones sobre proyectos ambientales y apoyo a emprendimientos locales.</p>
+        <a href="archivo2.html" class="btn-ver">Ver documento</a>
+        <span class="indicador">Acta oficial — participación ciudadana</span>
+      </div>
+
+      <button class="acordeon">Ver resumen</button>
+      <div class="panel">
+        <p>Durante la reunión se aprobaron dos programas: Jardines Urbanos y Huertas Escolares, ambos con participación comunal.</p>
       </div>
     </div>
   </section>
@@ -253,53 +74,41 @@
 </main>
 
 <footer>
-  <p>© 2025 Hernavia — Plataforma cívica de Gachancipá (demo)</p>
+  <p>©2025 Hernavia — Plataforma cívica de Gachancipá</p>
 </footer>
 
 <script>
-  // --- Acordeón ---
-  document.querySelectorAll(".acordeon").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const panel = btn.nextElementSibling;
-      panel.style.display = panel.style.display === "block" ? "none" : "block";
-    });
+const searchInput = document.getElementById("searchInput");
+const filterDate = document.getElementById("filterDate");
+const dias = document.querySelectorAll(".archivo-dia");
+
+searchInput.addEventListener("input", filtrar);
+filterDate.addEventListener("change", filtrar);
+
+function filtrar() {
+  const texto = searchInput.value.toLowerCase();
+  const fecha = filterDate.value;
+  dias.forEach(dia => {
+    const coincideFecha = fecha === "todos" || dia.dataset.dia === fecha;
+    const coincideTexto = dia.textContent.toLowerCase().includes(texto);
+    dia.style.display = coincideFecha && coincideTexto ? "block" : "none";
   });
 
-  // --- Buscador + Filtro ---
-  const searchInput = document.getElementById("searchInput");
-  const filterDate = document.getElementById("filterDate");
-  const meses = document.querySelectorAll(".archivo-mes");
+  document.querySelectorAll(".archivo-mes").forEach(mes => {
+    const visible = [...mes.querySelectorAll(".archivo-dia")].some(d => d.style.display === "block");
+    mes.style.display = visible ? "block" : "none";
+  });
+}
 
-  function filtrar() {
-    const query = searchInput.value.toLowerCase();
-    const filtroMes = filterDate.value;
-
-    meses.forEach(mes => {
-      const nombreMes = mes.dataset.mes;
-      let visibleMes = false;
-
-      mes.querySelectorAll(".archivo-dia").forEach(dia => {
-        let visibleDia = false;
-        dia.querySelectorAll(".archivo-item").forEach(item => {
-          const keywords = item.dataset.keywords.toLowerCase();
-          const coincideTexto = keywords.includes(query) || item.textContent.toLowerCase().includes(query);
-          if (coincideTexto) {
-            item.style.display = "block";
-            visibleDia = true;
-            visibleMes = true;
-          } else {
-            item.style.display = "none";
-          }
-        });
-        dia.style.display = visibleDia ? "block" : "none";
-      });
-
-      mes.style.display = (filtroMes === "all" || filtroMes === nombreMes) && visibleMes ? "block" : "none";
-    });
-  }
-
-  searchInput.addEventListener("input", filtrar);
-  filterDate.addEventListener("change", filtrar);
+const acordeones = document.querySelectorAll(".acordeon");
+acordeones.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const panel = btn.nextElementSibling;
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+  });
+});
 </script>
+
 </body>
 </html>
+
