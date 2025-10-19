@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archivos | Gachancipá Digital</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Archivos Municipales</h1>
+  <p>Documentos, comunicados y registros de la comunidad</p>
+</header>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="archivos.html" class="active">Archivos</a></li>
+    <li><a href="calendario.html">Calendario</a></li>
+    <li><a href="educacion.html">Educación</a></li>
+    <li><a href="cronicas.html">Crónicas</a></li>
+    <li><a href="proyectos.html">Proyectos</a></li>
+    <li><a href="wikipedia.html">Wikipedia Local</a></li>
+    <li><a href="llamados.html">Llamados al Pueblo</a></li>
+  </ul>
+</nav>
+
+<main class="archivos-container">
+
+  <section class="archivo-mes">
+    <h2>Octubre 2025</h2>
+
+    <div class="archivo-item">
+      <h3>Comunicado sobre la Feria Empresarial</h3>
+      <p>Actualización sobre los preparativos y participación ciudadana.</p>
+      <a href="archivo-feria.html" class="btn-ver">Ver más</a>
+      <span class="indicador">🌐 Página individual</span>
+    </div>
+
+    <div class="archivo-item">
+      <button class="acordeon">Informe de mantenimiento vial</button>
+      <div class="panel">
+        <p>Durante la primera semana de octubre se realizaron obras menores en los barrios
+        Santa Bárbara y Centro. Se invita a los ciudadanos a reportar nuevos puntos críticos.</p>
+      </div>
+      <span class="indicador">📄 Texto breve</span>
+    </div>
+
+  </section>
+
+  <section class="archivo-mes">
+    <h2>Septiembre 2025</h2>
+
+    <div class="archivo-item">
+      <button class="acordeon">Acta del Consejo Comunitario 12-09</button>
+      <div class="panel">
+        <p>Se discutieron temas de educación cívica, presupuesto participativo y proyectos
+        de juventud. Próxima sesión programada para el 20 de octubre.</p>
+      </div>
+      <span class="indicador">📄 Texto breve</span>
+    </div>
+
+    <div class="archivo-item">
+      <h3>Convocatoria abierta para voluntarios ambientales</h3>
+      <p>La Alcaldía invita a participar en el programa de recuperación ecológica local.</p>
+      <a href="archivo-voluntariado.html" class="btn-ver">Ver más</a>
+      <span class="indicador">🌐 Página individual</span>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 Hernavia — Plataforma cívica de Gachancipá (demo)</p>
+</footer>
+
+<script>
+  const accordions = document.querySelectorAll(".acordeon");
+  accordions.forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("activo");
+      const panel = btn.nextElementSibling;
+      panel.style.display = panel.style.display === "block" ? "none" : "block";
+    });
+  });
+</script>
+
+</body>
+</html>
