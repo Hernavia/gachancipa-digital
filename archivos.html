@@ -31,7 +31,7 @@
   </nav>
 
   <main class="archivos-container" id="archivosApp">
-    <section class="search-controls">
+    <section class="search-controls" style="text-align:center;">
       <label for="dateFrom">Desde</label>
       <input type="date" id="dateFrom">
       <label for="dateTo">Hasta</label>
@@ -161,15 +161,12 @@
 
     const acordions = document.querySelectorAll('.acordeon');
     acordions.forEach(btn => {
-      btn.style.backgroundColor = '#f9db0c';
       btn.addEventListener('click', () => {
         const expanded = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', String(!expanded));
         const panel = btn.nextElementSibling;
         if (!panel) return;
         panel.style.display = expanded ? 'none' : 'block';
-        btn.style.backgroundColor = '#fff';
-        btn.style.color = '#000';
       });
     });
 
@@ -177,3 +174,4 @@
   </script>
 </body>
 </html>
+
