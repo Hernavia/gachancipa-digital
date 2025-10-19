@@ -47,7 +47,6 @@
   <article class="archivo-mes" data-month="2025-10">
     <h2>Octubre 2025</h2>
 
-    <!-- Archivo largo normal -->
     <div class="archivo-item" data-type="larga" data-date="2025-10-18" data-keywords="acta consejo cultura feria empresarial">
       <h4>Acta 120: Feria Empresarial y espacio de Yukiherts</h4>
       <p class="meta">Alcaldía — 18/10/2025 — Documentos oficiales</p>
@@ -55,20 +54,22 @@
       <a class="btn-ver" href="https://hernavia.github.io/gachancipa-digital/archivos.html">Ver Página</a>
     </div>
 
-    <!-- Acordeón con tu estilo -->
-    <div class="acordeon">Compañía eléctrica: aviso de corte</div>
-    <div class="panel archivo-item" data-type="corta" data-date="2025-10-18" data-keywords="servicios agua corte">
-      <p class="meta">Servicios Públicos — 18/10/2025</p>
-      <p>Habrá suspensión del servicio entre las 8:00 y 14:00 por mantenimiento de la red eléctrica. Se recomienda a la comunidad tomar precauciones.</p>
+    <div class="archivo-item acordeon" data-type="corta" data-date="2025-10-18" data-keywords="servicios agua corte">
+      <h4>Compañía eléctrica: aviso de corte</h4>
+      <div class="panel" style="display:none;">
+        <p class="meta">Servicios Públicos — 18/10/2025</p>
+        <p>Habrá suspensión del servicio entre las 8:00 y 14:00 por mantenimiento de la red eléctrica. Se recomienda a la comunidad tomar precauciones.</p>
+      </div>
     </div>
 
-    <div class="acordeon">Reunión de Junta de Acción Comunal</div>
-    <div class="panel archivo-item" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria">
-      <p class="meta">Comunidad — 10/10/2025</p>
-      <p>Todos los presidentes de JAC locales están invitados a la reunión del próximo martes a las 7:00 pm en el salón comunal.</p>
+    <div class="archivo-item acordeon" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria">
+      <h4>Reunión de Junta de Acción Comunal</h4>
+      <div class="panel" style="display:none;">
+        <p class="meta">Comunidad — 10/10/2025</p>
+        <p>Todos los presidentes de JAC locales están invitados a la reunión del próximo martes a las 7:00 pm en el salón comunal.</p>
+      </div>
     </div>
-
-    <!-- Otro archivo largo normal -->
+    
     <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres">
       <h4>Convocatoria: Talleres de educación cívica</h4>
       <p class="meta">Educación — 10/10/2025</p>
@@ -83,7 +84,6 @@
   <p>©2025 — Archivos Municipales de Gachancipá</p>
 </footer>
 
-<!-- FILTRADOR POR FECHAS -->
 <script>
 const btnFilter = document.getElementById('btnFilter');
 const btnClear = document.getElementById('btnClear');
@@ -125,8 +125,7 @@ btnClear.addEventListener('click', e => {
   applyFilters();
 });
 </script>
-
-<!-- BUSCADOR -->
+  
 <script>
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
@@ -144,7 +143,7 @@ searchInput.addEventListener("input", () => {
     const keywords = item.dataset.keywords.toLowerCase();
     if(keywords.includes(query) || item.textContent.toLowerCase().includes(query)) {
       const btn = document.createElement("button");
-      btn.textContent = item.querySelector("h4") ? item.querySelector("h4").textContent : item.querySelector(".meta").textContent;
+      btn.textContent = item.querySelector("h4").textContent;
       btn.onclick = () => { item.scrollIntoView({behavior:"smooth"}); searchResults.style.display="none"; searchInput.value=""; };
       searchResults.appendChild(btn);
       found = true;
@@ -159,14 +158,15 @@ searchItems.forEach(item => {
   });
 });
 
-// Acordeones funcionales
+// Acordeones funcionales en un solo bloque
 const acordions = document.querySelectorAll(".acordeon");
 acordions.forEach(acc => {
   acc.addEventListener("click", () => {
-    const panel = acc.nextElementSibling;
+    const panel = acc.querySelector(".panel");
     panel.style.display = panel.style.display === "block" ? "none" : "block";
   });
 });
 </script>
+
 </body>
 </html>
