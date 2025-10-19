@@ -226,3 +226,107 @@ main, section, p {
   border-left: 3px solid #078930;
   border-radius: 0 0 8px 8px;
 }
+
+.archivos-container {
+  max-width: 950px;
+  margin: 40px auto;
+  padding: 0 30px;
+}
+
+.archivo-mes {
+  margin-bottom: 50px;
+}
+
+.archivo-mes h2 {
+  border-left: 6px solid #078930;
+  padding-left: 12px;
+  color: #078930;
+  margin-bottom: 25px;
+}
+
+.archivo-dia {
+  margin-bottom: 30px;
+}
+
+.archivo-dia h3 {
+  color: #078930;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.flecha {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #f9db0c;
+  margin-right: 10px;
+}
+
+.archivo-item {
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  transition: transform 0.2s;
+}
+
+.archivo-item:hover {
+  transform: translateY(-3px);
+}
+
+.archivo-item h4 {
+  margin-top: 0;
+  color: #000000;
+}
+
+.btn-ver {
+  display: inline-block;
+  background: #078930;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.btn-ver:hover {
+  background: #056d27;
+}
+
+.indicador {
+  display: block;
+  font-size: 0.85rem;
+  color: #555555;
+  margin-top: 6px;
+}
+
+.acordeon {
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  text-align: left;
+  border: 2px solid #078930;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.acordeon:hover {
+  background-color: #f9db0c;
+  color: #000000;
+}
+
+.panel {
+  display: none;
+  padding: 10px 15px;
+  background-color: #f2f2f2;
+  border-left: 4px solid #078930;
+  border-radius: 0 0 8px 8px;
+}
