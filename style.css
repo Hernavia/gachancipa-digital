@@ -10,7 +10,7 @@ header {
   clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
   text-align: center;
   padding: 40px 0 80px 0;
-  color: #ffffff; /* Todo el texto del header ahora es blanco */
+  color: #ffffff; 
 }
 
 header h1 {
@@ -148,7 +148,6 @@ main, section, p {
   box-sizing: border-box;
 }
 
-/* ======== Archivos ======== */
 
 .archivos-container {
   max-width: 900px;
@@ -167,14 +166,6 @@ main, section, p {
   margin-bottom: 20px;
 }
 
-.archivo-item {
-  background: #f5f5f5;
-  border-radius: 12px;
-  padding: 15px 20px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-
 .archivo-item h3 {
   margin-top: 0;
 }
@@ -190,7 +181,7 @@ main, section, p {
 }
 
 .btn-ver:hover {
-  background: #056d27;
+  background: #078930;
 }
 
 .indicador {
@@ -200,7 +191,6 @@ main, section, p {
   margin-top: 6px;
 }
 
-/* Acordeón */
 .acordeon {
   background-color: #f9db0c;
   color: #222;
@@ -215,7 +205,7 @@ main, section, p {
 }
 
 .acordeon:hover {
-  background-color: #f6d000;
+  background-color: #f9db0c;
 }
 
 .panel {
@@ -294,7 +284,7 @@ main, section, p {
 }
 
 .btn-ver:hover {
-  background: #056d27;
+  background: #078930;
 }
 
 .indicador {
@@ -382,7 +372,7 @@ main, section, p {
 .controls button.btn-filtro {
   padding: 8px 16px;
   border: 2px solid #000;
-  background: #006a44;
+  background: #078930;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
@@ -436,7 +426,7 @@ main, section, p {
   display: inline-block;
   padding: 8px 14px;
   border: 2px solid #000;
-  background: #006a44;
+  background: #078930;
   color: #fff;
   font-weight: 600;
   text-decoration: none;
