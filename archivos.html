@@ -4,21 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Archivos — Gachancipá Digital</title>
-  <meta name="description" content="Archivos municipales, comunicados y registros de la comunidad gachancipeña.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
   <h1>Archivos Municipales</h1>
-  <div class="header-box">
-    <p>Repositorio cívico de Hernavia — Gachancipá</p>
-  </div>
+  <p>Repositorio cívico de Gachancipá</p>
 </header>
 
 <nav class="navbar">
   <ul>
-    <li><a href="https://hernavia.github.io/gachancipa-digital/">Inicio</a></li>
+    <li><a href="index.html">Inicio</a></li>
     <li><a href="archivos.html" class="active">Archivos</a></li>
     <li><a href="proyectos.html">Proyectos</a></li>
     <li><a href="educacion.html">Educación</a></li>
@@ -112,10 +109,11 @@
 </main>
 
 <footer>
-  <p>©2025 Hernavia — Plataforma cívica de Gachancipá</p>
+  <p>©2025 Gachancipá Digital — Plataforma cívica y documental</p>
 </footer>
 
 <script>
+  // Acordeón
   const accordions = document.querySelectorAll(".acordeon");
   accordions.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -125,6 +123,7 @@
     });
   });
 
+  // Buscador y filtro
   const searchInput = document.getElementById("searchInput");
   const filterDate = document.getElementById("filterDate");
   const dias = document.querySelectorAll(".archivo-dia");
