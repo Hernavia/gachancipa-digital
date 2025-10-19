@@ -52,7 +52,7 @@
       </div>
 
       <button class="acordeon" aria-expanded="false">Votaciones del día 15</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-15" data-keywords="votaciones" tabindex="0">
+      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-15" data-keywords="votaciones" tabindex="0" style="display:none;">
         <h4>Votaciones del día 15</h4>
         <p>Se llevaron a cabo las votaciones locales, con participación de la comunidad y resultados preliminares.</p>
       </div>
@@ -65,7 +65,7 @@
       </div>
 
       <button class="acordeon" aria-expanded="false">Reunión de Junta de Acción Comunal</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria" tabindex="0">
+      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria" tabindex="0" style="display:none;">
         <h4>Reunión de Junta de Acción Comunal</h4>
         <p>Convocatoria abierta para todos los presidentes de JAC locales — 7:00 pm en el salón comunal.</p>
       </div>
@@ -82,12 +82,11 @@
       </div>
 
       <button class="acordeon" aria-expanded="false">Seminario de preservación</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-09-30" data-keywords="seminario preservacion archivos" tabindex="0">
+      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-09-30" data-keywords="seminario preservacion archivos" tabindex="0" style="display:none;">
         <h4>Seminario de preservación</h4>
         <p>Seminario práctico para gestores de archivos y estudiantes.</p>
       </div>
     </article>
-
   </main>
 
   <footer>
@@ -162,11 +161,9 @@
     const acordions = document.querySelectorAll('.acordeon');
     acordions.forEach(btn => {
       btn.addEventListener('click', () => {
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!expanded));
         const panel = btn.nextElementSibling;
         if (!panel) return;
-        panel.style.display = expanded ? 'none' : 'block';
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
       });
     });
 
@@ -174,4 +171,3 @@
   </script>
 </body>
 </html>
-
