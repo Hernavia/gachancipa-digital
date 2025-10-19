@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Archivos Municipales</title>
-  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
   <header>
@@ -18,20 +17,19 @@
     <ul>
       <li><a href="index.html">Inicio</a></li>
       <li><a href="archivos.html" class="active">Archivos</a></li>
-      <li><a href="continuidad.html">Continuidad</a></li>
-      <li><a href="mapa.html">Mapa Interactivo</a></li>
+      <li><a href="cronicas.html">Crónicas</a></li>
+      <li><a href="proyectos.html">Proyectos</a></li>
       <li><a href="educacion.html">Educación Cívica</a></li>
-      <li><a href="cronicas.html">Crónicas del Pueblo</a></li>
+      <li><a href="mapa.html">Mapa Interactivo</a></li>
+      <li><a href="calendario.html">Calendario</a></li>
       <li><a href="aula.html">Aula Municipal</a></li>
-      <li><a href="proyectos.html">Proyectos Gachancipeños</a></li>
       <li><a href="wiki.html">Wikipedia Local</a></li>
-      <li><a href="calendario.html">Calendario Comunitario</a></li>
     </ul>
   </nav>
 
   <main id="contenido">
     <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Buscar archivo...">
+      <input type="text" id="searchInput" placeholder="Buscar...">
       <select id="filterDate">
         <option value="todos">Todos los meses</option>
         <option value="septiembre">Septiembre 2025</option>
@@ -39,55 +37,86 @@
       </select>
     </div>
 
-    <section class="archivos-container">
+    <div class="archivos-container">
       <div class="archivo-mes" data-mes="septiembre">
-        <h2><span class="flecha"></span>Septiembre 2025</h2>
+        <h2>Septiembre 2025</h2>
 
-        <div class="archivo-item">
-          <h4>Informe de Actividades Comunitarias</h4>
-          <p>Resumen de las jornadas ambientales y culturales realizadas en el municipio.</p>
-          <a href="archivo-septiembre1.html" class="btn-ver">Ver más</a>
+        <div class="archivo-dia">
+          <h3><span class="flecha"></span>15 de septiembre</h3>
+          <div class="archivo-item">
+            <h4>Inicio de la Semana Cívica</h4>
+            <p>El municipio celebró el inicio de la Semana Cívica con actos culturales y deportivos.</p>
+            <a href="noticia1.html" class="btn-ver">Ver más</a>
+          </div>
+
+          <button class="acordeon">Ver más detalles</button>
+          <div class="panel">
+            <p>Durante la jornada se realizaron presentaciones artísticas locales y se inauguró el mural comunitario.</p>
+          </div>
         </div>
 
-        <button class="acordeon">Acta del Consejo Municipal</button>
-        <div class="panel">
-          <p>Documento oficial con las decisiones y acuerdos de la sesión ordinaria.</p>
-          <a href="archivo-septiembre2.html" class="btn-ver">Ver más</a>
+        <div class="archivo-dia">
+          <h3><span class="flecha"></span>28 de septiembre</h3>
+          <div class="archivo-item">
+            <h4>Proyecto de Reforestación</h4>
+            <p>Se plantaron más de 200 árboles en zonas rurales del municipio.</p>
+            <a href="noticia2.html" class="btn-ver">Ver más</a>
+          </div>
+
+          <button class="acordeon">Ver más detalles</button>
+          <div class="panel">
+            <p>La actividad fue liderada por estudiantes de instituciones locales y contó con el apoyo de la comunidad.</p>
+          </div>
         </div>
       </div>
 
       <div class="archivo-mes" data-mes="octubre">
-        <h2><span class="flecha"></span>Octubre 2025</h2>
+        <h2>Octubre 2025</h2>
 
-        <div class="archivo-item">
-          <h4>Feria Empresarial Local</h4>
-          <p>Registro de la feria de emprendimiento realizada en la plaza principal.</p>
-          <a href="archivo-octubre1.html" class="btn-ver">Ver más</a>
+        <div class="archivo-dia">
+          <h3><span class="flecha"></span>5 de octubre</h3>
+          <div class="archivo-item">
+            <h4>Feria Empresarial</h4>
+            <p>El municipio realizó la feria empresarial donde participaron productores locales y emprendedores.</p>
+            <a href="noticia3.html" class="btn-ver">Ver más</a>
+          </div>
+
+          <button class="acordeon">Ver más detalles</button>
+          <div class="panel">
+            <p>Más de 30 stands fueron instalados, promoviendo la economía local y los proyectos sostenibles.</p>
+          </div>
         </div>
 
-        <button class="acordeon">Presupuesto Participativo</button>
-        <div class="panel">
-          <p>Propuestas y distribución presupuestal para los proyectos ciudadanos.</p>
-          <a href="archivo-octubre2.html" class="btn-ver">Ver más</a>
+        <div class="archivo-dia">
+          <h3><span class="flecha"></span>12 de octubre</h3>
+          <div class="archivo-item">
+            <h4>Conmemoración del Día de la Raza</h4>
+            <p>Actos culturales resaltaron la diversidad e historia del municipio.</p>
+            <a href="noticia4.html" class="btn-ver">Ver más</a>
+          </div>
+
+          <button class="acordeon">Ver más detalles</button>
+          <div class="panel">
+            <p>Se realizaron exposiciones y desfiles estudiantiles como parte de la celebración.</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   </main>
 
   <footer>
-    <p>© 2025 Archivos Municipales | Gachancipá</p>
+    © 2025 Alcaldía Municipal - Archivos Cívicos y Comunitarios
   </footer>
 
   <script>
-    const acordiones = document.querySelectorAll(".acordeon");
-    acordiones.forEach(btn => {
+    const acordeones = document.querySelectorAll(".acordeon");
+    acordeones.forEach(btn => {
       btn.addEventListener("click", () => {
-        btn.classList.toggle("active");
+        btn.classList.toggle("activo");
         const panel = btn.nextElementSibling;
         panel.style.display = panel.style.display === "block" ? "none" : "block";
       });
     });
   </script>
-
 </body>
 </html>
