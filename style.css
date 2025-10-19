@@ -504,3 +504,18 @@ main, section, p {
   background: #f9db0c;
 }
 
+/* Botones de filtrar y limpiar */
+.filter-btn, .clear-btn {
+  background-color: #f9db0c;
+  color: #000;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.filter-btn:hover, .clear-btn:hover {
+  background-color: #078930;
+  color: #fff;
+}
