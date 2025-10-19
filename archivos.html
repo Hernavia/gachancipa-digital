@@ -21,13 +21,15 @@
       padding: 1.5em 0;
     }
 
+    /* NAVBAR */
     .navbar {
-      background-color: #f9db0c;
+      background-color: #ffffff;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.5em 1em;
+      padding: 0.7em 1em;
       flex-wrap: wrap;
+      border-bottom: 3px solid #078930;
     }
 
     .navbar ul {
@@ -47,12 +49,14 @@
     }
 
     .navbar a:hover {
-      border-bottom: 3px solid #d52b1e;
+      border-bottom: 3px solid #f9db0c; /* Amarillo al pasar */
+      color: #078930;
     }
 
     .navbar a.active {
       border-bottom: 3px solid #078930;
       font-weight: bold;
+      color: #078930;
     }
 
     .search-container {
@@ -63,7 +67,7 @@
 
     input[type="text"], select {
       padding: 0.4em;
-      border: 1px solid #ccc;
+      border: 2px solid #078930;
       border-radius: 5px;
     }
 
@@ -73,32 +77,48 @@
       margin: auto;
     }
 
+    /* BLOQUES PRINCIPALES */
     .archivo-mes {
       margin-bottom: 2em;
-      border-left: 5px solid #078930;
+      border-left: 6px solid #078930;
       padding-left: 1em;
     }
 
     .archivo-mes h2 {
       color: #078930;
-      margin-bottom: 0.5em;
+      background-color: #f9db0c33;
+      padding: 0.4em 0.6em;
+      border-radius: 5px;
+      display: inline-block;
     }
 
     .archivo-dia h3 {
-      color: #d52b1e;
+      color: #078930;
       margin-top: 1em;
+      border-left: 4px solid #f9db0c;
+      padding-left: 0.5em;
     }
 
     .archivo-item {
-      border: 2px solid #000;
+      border: 3px solid #000;
       padding: 1em;
-      margin: 0.5em 0;
+      margin: 0.8em 0;
       border-radius: 5px;
-      background-color: #fff9d6;
+      background-color: #fffef5;
     }
 
     .archivo-item:hover {
-      background-color: #fff3b0;
+      background-color: #fff8cc;
+    }
+
+    .archivo-item h4 {
+      color: #078930;
+      margin-bottom: 0.3em;
+    }
+
+    .archivo-item p {
+      color: #222;
+      margin: 0.3em 0;
     }
 
     .btn-ver {
@@ -109,6 +129,7 @@
       background-color: #078930;
       padding: 0.4em 0.8em;
       border-radius: 4px;
+      border: 2px solid #000;
       transition: background-color 0.3s;
     }
 
@@ -120,16 +141,44 @@
       display: block;
       font-size: 0.9em;
       margin-top: 0.4em;
-      color: #555;
+      color: #444;
     }
 
     footer {
-      background-color: #f9db0c;
+      background-color: #078930;
       text-align: center;
       padding: 1em;
       margin-top: 2em;
-      color: #000;
+      color: #fff;
       font-weight: 500;
+      border-top: 4px solid #f9db0c;
+    }
+
+    /* ACORDEÓN */
+    .acordeon {
+      background-color: #f9db0c33;
+      color: #000;
+      cursor: pointer;
+      padding: 0.8em;
+      border: 2px solid #000;
+      border-radius: 4px;
+      text-align: left;
+      font-weight: 600;
+      transition: all 0.3s;
+      width: 100%;
+    }
+
+    .acordeon:hover {
+      background-color: #f9db0c66;
+    }
+
+    .panel {
+      display: none;
+      overflow: hidden;
+      padding: 0.8em;
+      border-left: 3px solid #078930;
+      margin-top: 0.3em;
+      background-color: #ffffff;
     }
   </style>
 </head>
@@ -234,7 +283,6 @@
   const searchInput = document.getElementById("searchInput");
   const filterDate = document.getElementById("filterDate");
   const meses = document.querySelectorAll(".archivo-mes");
-  const items = document.querySelectorAll(".archivo-item");
 
   function filtrar() {
     const query = searchInput.value.toLowerCase();
@@ -267,3 +315,4 @@
 
 </body>
 </html>
+
