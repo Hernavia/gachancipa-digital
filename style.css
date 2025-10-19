@@ -148,3 +148,81 @@ main, section, p {
   padding-right: 25px;
   box-sizing: border-box;
 }
+
+/* ======== Archivos ======== */
+
+.archivos-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.archivo-mes {
+  margin-bottom: 40px;
+}
+
+.archivo-mes h2 {
+  border-left: 6px solid #078930;
+  padding-left: 10px;
+  color: #078930;
+  margin-bottom: 20px;
+}
+
+.archivo-item {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.archivo-item h3 {
+  margin-top: 0;
+}
+
+.btn-ver {
+  display: inline-block;
+  background: #078930;
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.btn-ver:hover {
+  background: #056d27;
+}
+
+.indicador {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 6px;
+}
+
+/* Acordeón */
+.acordeon {
+  background-color: #f9db0c;
+  color: #222;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.acordeon:hover {
+  background-color: #f6d000;
+}
+
+.panel {
+  display: none;
+  padding: 10px 15px;
+  background-color: #fff;
+  border-left: 3px solid #078930;
+  border-radius: 0 0 8px 8px;
+}
