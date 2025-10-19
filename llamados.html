@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Llamados al Pueblo — Gachancipá</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Llamados al Pueblo</h1>
+  <div class="header-box"><p>Participa en las decisiones ciudadanas de Gachancipá</p></div>
+</header>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="archivos.html">Archivos</a></li>
+    <li><a href="calendario.html">Calendario</a></li>
+    <li><a href="educacion.html">Educación</a></li>
+    <li><a href="proyectos.html">Proyectos</a></li>
+    <li><a href="llamados.html" class="active">Llamados al Pueblo</a></li>
+  </ul>
+</nav>
+
+<section class="search-controls">
+  <h2>Filtrar por categoría</h2>
+  <div class="filtros">
+    <label for="categoriaSelect">Categoría:</label>
+    <select id="categoriaSelect">
+      <option value="presupuesto">Presupuesto</option>
+      <option value="cultura">Cultura</option>
+    </select>
+  </div>
+</section>
+
+<main class="llamados-container">
+
+  <!-- Categoría: Presupuesto -->
+  <article class="categoria" data-categoria="presupuesto">
+    <h2>Presupuesto</h2>
+
+    <!-- Votación finalizada -->
+    <details class="votacion">
+      <summary>Presupuesto Municipal 2025 — 15/10/2025</summary>
+      <p>Se aprobó el presupuesto municipal 2025 con los siguientes puntos clave...</p>
+      <p>Resultado: Aprobado</p>
+    </details>
+
+    <!-- Votación abierta -->
+    <div class="votacion abierta" data-date="2025-10-31">
+      <h4>Presupuesto Extraordinario 2025</h4>
+      <p>Se propone un presupuesto extraordinario para obras de infraestructura. ¿Estás de acuerdo?</p>
+      <button>Sí</button>
+      <button>No</button>
+    </div>
+  </article>
+
+  <!-- Categoría: Cultura -->
+  <article class="categoria" data-categoria="cultura" style="display:none;">
+    <h2>Cultura</h2>
+
+    <!-- Votación finalizada -->
+    <details class="votacion">
+      <summary>Feria Cultural 2025 — 01/10/2025</summary>
+      <p>Se realizó la feria cultural con diversas actividades artísticas y educativas.</p>
+      <p>Resultado: Exitosa</p>
+    </details>
+
+    <!-- Votación abierta -->
+    <div class="votacion abierta" data-date="2025-10-20">
+      <h4>Consulta sobre taller de música</h4>
+      <p>Se propone iniciar talleres de música en la ciudad. ¿Quieres que se haga?</p>
+      <button>Sí</button>
+      <button>No</button>
+    </div>
+  </article>
+
+</main>
+
+<script>
+// Filtrado por categoría
+const categoriaSelect = document.getElementById('categoriaSelect');
+const categorias = document.querySelectorAll('.categoria');
+
+categoriaSelect.addEventListener('change', () => {
+  const valor = categoriaSelect.value;
+  categorias.forEach(cat => {
+    cat.style.display = (cat.dataset.categoria === valor) ? 'block' : 'none';
+  });
+});
+</script>
+</body>
+</html>
