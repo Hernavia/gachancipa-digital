@@ -142,3 +142,9 @@ footer {
 .skip-link:focus {
   top: 0;
 }
+
+main, section, p {
+  padding-left: 25px;
+  padding-right: 25px;
+  box-sizing: border-box;
+}
