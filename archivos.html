@@ -4,7 +4,99 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Archivos | Gachancipá Digital</title>
+  <meta name="description" content="Archivos municipales de Gachancipá: comunicados, informes, convocatorias y registros cívicos organizados por fecha.">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+  /* Flecha con los colores de la bandera */
+  .flecha {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-right: 8px;
+    vertical-align: middle;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid #078930; /* verde */
+    position: relative;
+  }
+  .flecha::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid #f9db0c; /* amarillo */
+  }
+
+  /* Espaciado de los títulos de fecha */
+  .archivo-dia h3 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.1rem;
+    color: #078930;
+    border-bottom: 2px solid #078930;
+    padding-bottom: 5px;
+    margin-top: 30px;
+  }
+
+  /* Ajustes para los items */
+  .archivo-item {
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: #e1efdb;
+  }
+
+  .btn-ver {
+    display: inline-block;
+    background-color: #078930;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+
+  .btn-ver:hover {
+    background-color: #066f26;
+  }
+
+  .indicador {
+    display: block;
+    margin-top: 4px;
+    color: #555;
+    font-size: 0.9rem;
+  }
+
+  .acordeon {
+    background-color: #f9db0c;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+  }
+
+  .panel {
+    display: none;
+    padding: 8px;
+    background-color: #f6f6f6;
+    border-radius: 0 0 6px 6px;
+  }
+
+  .archivo-mes h2 {
+    margin-top: 40px;
+    text-align: center;
+    color: #078930;
+  }
+  </style>
 </head>
 <body>
 
@@ -42,7 +134,7 @@
     <h2>Octubre 2025</h2>
 
     <div class="archivo-dia" data-date="14 octubre">
-      <h3><span class="flecha"></span> 14 de octubre</h3>
+      <h3><span class="flecha"></span>14 de octubre</h3>
 
       <div class="archivo-item" data-keywords="feria empresarial participación ciudadana">
         <h4>Comunicado sobre la Feria Empresarial</h4>
@@ -54,21 +146,19 @@
       <div class="archivo-item" data-keywords="mantenimiento vial obras barrios">
         <button class="acordeon">Informe de mantenimiento vial</button>
         <div class="panel">
-          <p>Durante la primera semana de octubre se realizaron obras menores en los barrios
-          Santa Bárbara y Centro. Se invita a los ciudadanos a reportar nuevos puntos críticos.</p>
+          <p>Durante la primera semana de octubre se realizaron obras menores en los barrios Santa Bárbara y Centro. Se invita a los ciudadanos a reportar nuevos puntos críticos.</p>
         </div>
         <span class="indicador">📄 Texto breve</span>
       </div>
     </div>
 
     <div class="archivo-dia" data-date="4 octubre">
-      <h3><span class="flecha"></span> 4 de octubre</h3>
+      <h3><span class="flecha"></span>4 de octubre</h3>
 
       <div class="archivo-item" data-keywords="convocatoria artistas cultura">
         <button class="acordeon">Convocatoria abierta a artistas locales</button>
         <div class="panel">
-          <p>La Casa de la Cultura invita a los creadores del municipio a participar
-          en la exposición anual de arte y patrimonio.</p>
+          <p>La Casa de la Cultura invita a los creadores del municipio a participar en la exposición anual de arte y patrimonio.</p>
         </div>
         <span class="indicador">📄 Texto breve</span>
       </div>
@@ -79,7 +169,7 @@
     <h2>Septiembre 2025</h2>
 
     <div class="archivo-dia" data-date="20 septiembre">
-      <h3><span class="flecha"></span> 20 de septiembre</h3>
+      <h3><span class="flecha"></span>20 de septiembre</h3>
 
       <div class="archivo-item" data-keywords="voluntariado ambiental ecologia programa">
         <h4>Convocatoria de voluntariado ambiental</h4>
@@ -90,13 +180,12 @@
     </div>
 
     <div class="archivo-dia" data-date="12 septiembre">
-      <h3><span class="flecha"></span> 12 de septiembre</h3>
+      <h3><span class="flecha"></span>12 de septiembre</h3>
 
       <div class="archivo-item" data-keywords="acta consejo comunitario educacion">
         <button class="acordeon">Acta del Consejo Comunitario 12-09</button>
         <div class="panel">
-          <p>Se discutieron temas de educación cívica, presupuesto participativo y proyectos
-          de juventud. Próxima sesión programada para el 20 de octubre.</p>
+          <p>Se discutieron temas de educación cívica, presupuesto participativo y proyectos de juventud. Próxima sesión programada para el 20 de octubre.</p>
         </div>
         <span class="indicador">📄 Texto breve</span>
       </div>
@@ -125,7 +214,6 @@
   const searchInput = document.getElementById("searchInput");
   const filterDate = document.getElementById("filterDate");
   const dias = document.querySelectorAll(".archivo-dia");
-  const items = document.querySelectorAll(".archivo-item");
 
   function filtrar() {
     const query = searchInput.value.toLowerCase();
@@ -155,6 +243,5 @@
   searchInput.addEventListener("input", filtrar);
   filterDate.addEventListener("change", filtrar);
 </script>
-
 </body>
 </html>
