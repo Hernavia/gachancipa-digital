@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Archivos — Gachancipá</title>
-  <meta name="description" content="Repositorio público de archivos municipales de Gachancipá: actas, convocatorias, avisos y noticias oficiales para la comunidad.">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archivos — Gachancipá</title>
+<meta name="description" content="Repositorio público de archivos municipales de Gachancipá: actas, convocatorias, avisos y noticias oficiales para la comunidad.">
+<link rel="stylesheet" href="style.css">
+<style>
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+</style>
 </head>
-
 <body>
 <header>
   <h1>Archivos Municipales</h1>
@@ -26,25 +37,26 @@
     <li><a href="wikigacha.html">Enciclopedia Gachancipeña</a></li>
   </ul>
   <div class="search-container">
+    <label for="searchInput" class="sr-only">Buscar archivos</label>
     <input type="text" id="searchInput" placeholder="Buscar...">
     <div id="searchResults"></div>
   </div>
 </nav>
 
+<section class="search-controls">
+  <h2>Filtrar y Buscar Archivos</h2>
+  <div class="filtros">
+    <label for="dateFrom">Desde</label>
+    <input type="date" id="dateFrom">
+    <label for="dateTo">Hasta</label>
+    <input type="date" id="dateTo">
+    <button id="btnFilter" class="filter-btn">Filtrar</button>
+    <button id="btnClear" class="clear-btn">Limpiar</button>
+  </div>
+  <div class="result-count" id="resultCount">Mostrando todas las noticias</div>
+</section>
+
 <main class="archivos-container">
-
-  <section class="search-controls">
-    <div class="filtros">
-      <label for="dateFrom">Desde</label>
-      <input type="date" id="dateFrom">
-      <label for="dateTo">Hasta</label>
-      <input type="date" id="dateTo">
-      <button id="btnFilter" class="filter-btn">Filtrar</button>
-      <button id="btnClear" class="clear-btn">Limpiar</button>
-    </div>
-    <div class="result-count" id="resultCount">Mostrando todas las noticias</div>
-  </section>
-
   <article class="archivo-mes" data-month="2025-10">
     <h2>Octubre 2025</h2>
 
@@ -121,9 +133,7 @@ btnClear.addEventListener('click', e => {
   dateTo.value = '';
   applyFilters();
 });
-</script>
 
-<script>
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
 const searchItems = document.querySelectorAll(".archivo-item");
@@ -140,7 +150,7 @@ searchInput.addEventListener("input", () => {
     const keywords = item.dataset.keywords.toLowerCase();
     if(keywords.includes(query) || item.textContent.toLowerCase().includes(query)) {
       const btn = document.createElement("button");
-      btn.textContent = item.querySelector("h4") ? item.querySelector("h4").textContent : item.querySelector("summary").textContent;
+      btn.textContent = item.querySelector("h3") ? item.querySelector("h3").textContent : item.querySelector("summary").textContent;
       btn.onclick = () => { item.scrollIntoView({behavior:"smooth"}); searchResults.style.display="none"; searchInput.value=""; };
       searchResults.appendChild(btn);
       found = true;
