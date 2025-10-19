@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendario — Gachancipá</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Calendario Municipal</h1>
+  <div class="header-box"><p>Eventos y actividades de Gachancipá</p></div>
+</header>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="archivos.html">Archivos</a></li>
+    <li><a href="calendario.html" class="active">Calendario</a></li>
+    <li><a href="educacion.html">Educación</a></li>
+    <li><a href="cronicas.html">Crónicas</a></li>
+    <li><a href="proyectos.html">Proyectos</a></li>
+    <li><a href="llamados.html">Llamados al Pueblo</a></li>
+    <li><a href="wikigacha.html">Enciclopedia Gachancipeña</a></li>
+  </ul>
+  <div class="search-container">
+    <label for="searchInput" class="sr-only">Buscar en el calendario</label>
+    <input type="text" id="searchInput" placeholder="Buscar...">
+    <div id="searchResults"></div>
+  </div>
+</nav>
+
+<main class="archivos-container">
+  <section class="search-controls">
+    <div class="filtros">
+      <label for="dateFrom">Desde</label>
+      <input type="date" id="dateFrom">
+      <label for="dateTo">Hasta</label>
+      <input type="date" id="dateTo">
+      <button id="btnFilter" class="filter-btn">Filtrar</button>
+      <button id="btnClear" class="clear-btn">Limpiar</button>
+    </div>
+    <div class="result-count" id="resultCount">Mostrando todos los eventos</div>
+  </section>
+
+  <article class="archivo-mes" data-month="2025-10">
+    <h2>Octubre 2025</h2>
+
+    <details class="archivo-item" data-date="2025-10-31" data-keywords="feria empresarial">
+      <summary>31/10 — Feria Empresarial</summary>
+      <p class="meta">Evento: Feria Empresarial — 31/10/2025</p>
+      <p>Se habilitará un espacio para la feria empresarial donde participarán distintas empresas locales.</p>
+      <a class="btn-ver" href="evento-feria.html">Ver más detalles</a>
+    </details>
+
+  </article>
+</main>
+
+<footer>
+  <p>©2025 — Calendario Municipal de Gachancipá</p>
+</footer>
+
+<script>
+const btnFilter = document.getElementById('btnFilter');
+const btnClear = document.getElementById('btnClear');
+const dateFrom = document.getElementById('dateFrom');
+const dateTo = document.getElementById('dateTo');
+const items = Array.from(document.querySelectorAll('.archivo-item'));
+const resultCount = document.getElementById('resultCount');
+
+function formatCount(n){
+  return n === 0 ? 'No hay resultados' : n === 1 ? '1 resultado' : n + ' resultados';
+}
+
+function applyFilters(){
+  const from = dateFrom.value;
+  const to = dateTo.value;
+  let visible = 0;
+
+  items.forEach(it => {
+    const date = it.dataset.date;
+    let show = true;
+    if(from && date < from) show = false;
+    if(to && date > to) show = false;
+    it.style.display = show ? 'block' : 'none';
+    visible += show ? 1 : 0;
+  });
+
+  resultCount.textContent = formatCount(visible);
+}
+
+btnFilter.addEventListener('click', e => {
+  e.preventDefault();
+  applyFilters();
+});
+
+btnClear.addEventListener('click', e => {
+  e.preventDefault();
+  dateFrom.value = '';
+  dateTo.value = '';
+  applyFilters();
+});
+
+// Buscador
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  searchResults.innerHTML = "";
+  if(query === "") {
+    searchResults.style.display = "none";
+    return;
+  }
+  let found = false;
+  items.forEach(item => {
+    const keywords = item.dataset.keywords.toLowerCase();
+    if(keywords.includes(query) || item.textContent.toLowerCase().includes(query)) {
+      const btn = document.createElement("button");
+      btn.textContent = item.querySelector("summary").textContent;
+      btn.onclick = () => { item.scrollIntoView({behavior:"smooth"}); searchResults.style.display="none"; searchInput.value=""; };
+      searchResults.appendChild(btn);
+      found = true;
+    }
+  });
+  searchResults.style.display = found ? "block" : "none";
+});
+
+items.forEach(item => {
+  item.addEventListener("keypress", (e) => {
+    if(e.key === "Enter") item.scrollIntoView({behavior:"smooth"});
+  });
+});
+</script>
+</body>
+</html>
