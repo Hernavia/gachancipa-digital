@@ -353,3 +353,164 @@ main, section, p {
   background-color: #ffffff;
   color: #000000;
 }
+
+.archivos-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  border-top: 3px solid #000;
+}
+
+.filtros {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 18px 0;
+}
+
+.filtros input[type="date"] {
+  padding: 8px;
+  border-radius: 8px;
+  border: 2px solid #000;
+  background: #fff;
+  color: #000;
+}
+
+.controls button.btn-filtro {
+  padding: 8px 16px;
+  border: 2px solid #000;
+  background: #006a44;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.controls button.btn-filtro:hover {
+  background: #f9db0c;
+  color: #000;
+}
+
+.result-count {
+  text-align: center;
+  margin-top: 6px;
+  color: #000;
+  font-weight: 600;
+}
+
+.archivo-mes {
+  border-top: 2px solid #000;
+  padding-top: 10px;
+  margin-top: 25px;
+}
+
+.archivo-dia {
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.archivo-item {
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 12px;
+  margin-top: 10px;
+  background: #fff;
+}
+
+.archivo-item--short {
+  background: #fefefe;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: #222;
+}
+
+.btn-ver {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 2px solid #000;
+  background: #006a44;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-ver:hover {
+  background: #f9db0c;
+  color: #000;
+}
+
+.acordeon {
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+  border: 2px solid #000;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.3s;
+  margin-top: 12px;
+}
+
+.acordeon:hover {
+  background: #f9db0c;
+}
+
+.panel {
+  display: none;
+  overflow: hidden;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 6px;
+}
+
+.search-container {
+  position: relative;
+}
+
+#searchInputFiles {
+  padding: 8px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+}
+
+#searchResultsFiles {
+  position: absolute;
+  background: #fff;
+  border: 2px solid #000;
+  width: 100%;
+  top: 40px;
+  left: 0;
+  z-index: 10;
+  display: none;
+  border-radius: 8px;
+}
+
+#searchResultsFiles button {
+  display: block;
+  width: 100%;
+  background: #fff;
+  border: none;
+  padding: 8px 10px;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#searchResultsFiles button:hover {
+  background: #f9db0c;
+}
+
