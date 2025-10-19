@@ -4,127 +4,81 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Enciclopedia Gachancipeña</title>
-<style>
-  body {
-    font-family: "Poppins", sans-serif;
-    background: #fff;
-    color: #222;
-    margin: 0;
-    padding: 20px;
-  }
-  header {
-    text-align: center;
-    padding: 30px 0;
-    background: linear-gradient(135deg, #078930 50%, #f9db0c 50%);
-    color: #fff;
-  }
-  h1 {
-    margin: 0;
-  }
-  .search-container {
-    margin: 20px auto;
-    max-width: 500px;
-    position: relative;
-  }
-  #searchInput {
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: 2px solid #000;
-  }
-  #searchResults {
-    display: none;
-    position: absolute;
-    width: 100%;
-    background: #fff;
-    border: 2px solid #000;
-    border-radius: 8px;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 10;
-  }
-  #searchResults button {
-    width: 100%;
-    padding: 8px;
-    background: #fff;
-    border: none;
-    text-align: left;
-    cursor: pointer;
-  }
-  #searchResults button:hover {
-    background: #f9db0c;
-    color: #000;
-  }
-  details {
-    border: 2px solid #000;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 10px 0;
-  }
-  summary {
-    font-weight: 600;
-    cursor: pointer;
-  }
-  p {
-    margin: 6px 0;
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
   <h1>Enciclopedia Gachancipeña</h1>
-  <p>Explora información sobre Gachancipá</p>
+  <div class="header-box"><p>Explora información sobre Gachancipá</p></div>
 </header>
 
-<div class="search-container">
-  <input type="text" id="searchInput" placeholder="Buscar artículos...">
-  <div id="searchResults"></div>
-</div>
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="archivos.html">Archivos</a></li>
+    <li><a href="calendario.html">Calendario</a></li>
+    <li><a href="educacion.html">Educación</a></li>
+    <li><a href="cronicas.html">Crónicas</a></li>
+    <li><a href="proyectos.html">Proyectos</a></li>
+    <li><a href="llamados.html">Llamados al Pueblo</a></li>
+    <li><a href="wikigacha.html" class="active">Enciclopedia Gachancipeña</a></li>
+  </ul>
+  <div class="search-container">
+    <label for="searchInput" class="sr-only">Buscar artículos</label>
+    <input type="text" id="searchInput" placeholder="Buscar...">
+    <div id="searchResults"></div>
+  </div>
+</nav>
 
-<main id="wikiArticles">
+<main class="archivos-container">
+<article id="wikiArticles">
 
-<details class="wiki-item" data-keywords="gachancipa municipio cundinamarca">
+<details class="archivo-item" data-keywords="gachancipa municipio cundinamarca">
   <summary>¿Qué es Gachancipá?</summary>
-  <p><strong>Gachancipá</strong> es un municipio colombiano ubicado en el departamento de Cundinamarca, en la provincia de Sabana Centro, a aproximadamente 30 km de Bogotá. Su nombre proviene del idioma muisca, significando "alfarería del Zipa".</p>
+  <p><strong>Gachancipá</strong> es un municipio colombiano ubicado en el departamento de Cundinamarca, a aproximadamente 30 km de Bogotá. Su nombre proviene del idioma muisca, significando "alfarería del Zipa".</p>
 </details>
 
-<details class="wiki-item" data-keywords="historia gachancipa chibcha colonial">
+<details class="archivo-item" data-keywords="historia gachancipa chibcha colonial">
   <summary>Historia</summary>
-  <p>Fundado el 5 de septiembre de 1612, Gachancipá tiene sus orígenes en los asentamientos precolombinos de la civilización chibcha. Durante la época colonial, fue un importante centro de producción de sal y cerámica.</p>
+  <p>Fundado el 5 de septiembre de 1612, Gachancipá tiene sus orígenes en los asentamientos precolombinos de la civilización chibcha. Durante la época colonial, fue un centro de producción de sal y cerámica.</p>
 </details>
 
-<details class="wiki-item" data-keywords="geografia altiplano templado">
+<details class="archivo-item" data-keywords="geografia altiplano templado">
   <summary>Geografía</summary>
   <p>Ubicado en el altiplano cundiboyacense, Gachancipá presenta un relieve montañoso con zonas de vegetación secundaria. Limita con Suesca, Nemocón, Tocancipá, Sesquilé, Guatavita y Zipaquirá.</p>
 </details>
 
-<details class="wiki-item" data-keywords="alcalde gobierno">
+<details class="archivo-item" data-keywords="alcalde gobierno">
   <summary>Gobierno Municipal</summary>
   <p>El actual alcalde de Gachancipá es el Dr. Alfonso López Sánchez. Su administración se enfoca en educación, infraestructura y participación ciudadana.</p>
 </details>
 
-<details class="wiki-item" data-keywords="cultura tradiciones fiestas san bartolome">
+<details class="archivo-item" data-keywords="cultura tradiciones fiestas san bartolome">
   <summary>Cultura y Tradiciones</summary>
   <p>La cultura de Gachancipá incluye festividades en honor a San Bartolomé, música, danza y artesanías locales.</p>
 </details>
 
-<details class="wiki-item" data-keywords="simbolos escudo bandera">
+<details class="archivo-item" data-keywords="simbolos escudo bandera">
   <summary>Símbolos</summary>
   <p>El escudo presenta una cruz y espadas cruzadas, mientras que la bandera es de color sinople con figuras romboides.</p>
 </details>
 
-<details class="wiki-item" data-keywords="turismo atractivos iglesia capilla casa cultura">
+<details class="archivo-item" data-keywords="turismo atractivos iglesia capilla casa cultura">
   <summary>Atractivos Turísticos</summary>
   <p>Entre los atractivos destacan la Capilla de Santa Bárbara, la Casa de la Cultura, la Iglesia de San Bartolomé y artesanías locales.</p>
 </details>
 
+</article>
 </main>
+
+<footer>
+  <p>©2025 — Enciclopedia Gachancipeña</p>
+</footer>
 
 <script>
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
-const wikiItems = document.querySelectorAll(".wiki-item");
+const wikiItems = document.querySelectorAll(".archivo-item");
 
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase();
