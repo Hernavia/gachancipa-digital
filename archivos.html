@@ -5,39 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Archivos — Gachancipá</title>
 <link rel="stylesheet" href="style.css">
-<style>
-body {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-/* Buscador estilo original */
-.search-container {
-  margin-left: auto;
-}
-#searchInput {
-  padding: 5px;
-  width: 180px;
-}
-#searchResults {
-  position: absolute;
-  background: #fff;
-  border: 1px solid #000;
-  max-height: 200px;
-  overflow-y: auto;
-  width: 180px;
-}
-
-
-details {
-  margin-bottom: 10px;
-}
-summary {
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 20px;
-}
-</style>
 </head>
 <body>
 <header>
@@ -62,24 +29,12 @@ summary {
   </div>
 </nav>
 
-<main class="archivos-container" id="archivosApp">
-
-  <section class="search-controls">
-    <div class="filtros">
-      <label for="dateFrom">Desde</label>
-      <input type="date" id="dateFrom" style="width:180px;">
-      <label for="dateTo">Hasta</label>
-      <input type="date" id="dateTo" style="width:180px;">
-      <button id="btnFilter" class="filter-btn">Filtrar</button>
-      <button id="btnClear" class="clear-btn">Limpiar</button>
-    </div>
-    <div class="result-count" id="resultCount">Mostrando todas las noticias</div>
-  </section>
+<main class="archivos-container">
 
   <article class="archivo-mes" data-month="2025-10">
     <h2>Octubre 2025</h2>
 
-    <div class="archivo-item" data-type="larga" data-date="2025-10-18" data-keywords="acta consejo cultura feria empresarial" tabindex="0">
+    <div class="archivo-item" data-type="larga" data-date="2025-10-18" data-keywords="acta consejo cultura feria empresarial">
       <h4>Acta 120: Feria Empresarial y espacio de Yukiherts</h4>
       <p class="meta">Alcaldía — 18/10/2025 — Documentos oficiales</p>
       <p>Se habilitó un espacio para la feria empresarial donde participará Yukiherts.</p>
@@ -98,8 +53,7 @@ summary {
       <p>Todos los presidentes de JAC locales están invitados a la reunión del próximo martes a las 7:00 pm en el salón comunal.</p>
     </details>
 
-    <!-- Otro archivo largo normal -->
-    <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres" tabindex="0">
+    <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres">
       <h4>Convocatoria: Talleres de educación cívica</h4>
       <p class="meta">Educación — 10/10/2025</p>
       <p>Se abren inscripciones para talleres dirigidos a colegios y líderes comunitarios.</p>
@@ -114,67 +68,34 @@ summary {
 </footer>
 
 <script>
-const btnFilter = document.getElementById('btnFilter');
-const btnClear = document.getElementById('btnClear');
-const dateFrom = document.getElementById('dateFrom');
-const dateTo = document.getElementById('dateTo');
-const items = Array.from(document.querySelectorAll('.archivo-item'));
-const resultCount = document.getElementById('resultCount');
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
+const items = document.querySelectorAll(".archivo-item");
 
-function formatCount(n){return n===0?'No hay resultados':n===1?'1 resultado':n+' resultados';}
-
-function applyFilters(){
-  const from = dateFrom.value;
-  const to = dateTo.value;
-  let visible = 0;
-
-  items.forEach(it=>{
-    const date = it.dataset.date;
-    let show = true;
-    if(from && date < from) show = false;
-    if(to && date > to) show = false;
-    it.style.display = show ? 'block' : 'none';
-    visible += show ? 1 : 0;
-  });
-
-  resultCount.textContent = formatCount(visible);
-}
-
-btnFilter.addEventListener('click', e=>{
-  e.preventDefault();
-  applyFilters();
-});
-
-btnClear.addEventListener('click', e=>{
-  e.preventDefault();
-  dateFrom.value = '';
-  dateTo.value = '';
-  applyFilters();
-});
-
-const searchInput = document.getElementById('searchInput');
-const searchResults = document.getElementById('searchResults');
-
-searchInput.addEventListener('input', ()=>{
+searchInput.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase();
-  searchResults.innerHTML = '';
-  if(query.length === 0) return;
-
-  const matches = items.filter(it=>{
-    const title = it.querySelector('h4') ? it.querySelector('h4').textContent : it.querySelector('summary').textContent;
-    return it.dataset.keywords.toLowerCase().includes(query) || title.toLowerCase().includes(query);
+  searchResults.innerHTML = "";
+  if(query === "") {
+    searchResults.style.display = "none";
+    return;
+  }
+  let found = false;
+  items.forEach(item => {
+    const keywords = item.dataset.keywords.toLowerCase();
+    if(keywords.includes(query) || item.textContent.toLowerCase().includes(query)) {
+      const btn = document.createElement("button");
+      btn.textContent = item.querySelector("h4") ? item.querySelector("h4").textContent : item.querySelector("summary").textContent;
+      btn.onclick = () => { item.scrollIntoView({behavior:"smooth"}); searchResults.style.display="none"; searchInput.value=""; };
+      searchResults.appendChild(btn);
+      found = true;
+    }
   });
+  searchResults.style.display = found ? "block" : "none";
+});
 
-  matches.forEach(it=>{
-    const div = document.createElement('div');
-    const title = it.querySelector('h4') ? it.querySelector('h4').textContent : it.querySelector('summary').textContent;
-    div.textContent = title;
-    div.style.cursor = 'pointer';
-    div.addEventListener('click', ()=>{
-      it.scrollIntoView({behavior: 'smooth'});
-      it.style.border = '2px solid #006a44';
-    });
-    searchResults.appendChild(div);
+items.forEach(item => {
+  item.addEventListener("keypress", (e) => {
+    if(e.key === "Enter") item.scrollIntoView({behavior:"smooth"});
   });
 });
 </script>
