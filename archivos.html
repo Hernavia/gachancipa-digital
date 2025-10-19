@@ -33,10 +33,8 @@
   <main class="archivos-container" id="archivosApp">
     <section class="search-controls">
       <div class="filtros">
-        <label for="dateFrom">Desde</label>
-        <input type="date" id="dateFrom">
-        <label for="dateTo">Hasta</label>
-        <input type="date" id="dateTo">
+        <label for="dateFilter">Fecha</label>
+        <input type="date" id="dateFilter">
         <button id="btnFilter" class="btn-filtro">Filtrar</button>
         <button id="btnClear" class="btn-filtro">Limpiar</button>
       </div>
@@ -50,28 +48,30 @@
         <h4>Acta 120: Feria Empresarial y espacio de Yukiherts</h4>
         <p class="meta">Alcaldía — 18/10/2025 — Documentos oficiales</p>
         <p>Se habilitó un espacio para la feria empresarial donde participará Yukiherts.</p>
-        <a class="btn-ver" href="noticia_120.html">Ver página</a>
+        <a href="https://hernavia.github.io/gachancipa-digital/archivos.html/#pagina" class="btn-ver">Ver página</a>
       </div>
 
-      <button class="acordeon" aria-expanded="false">Corte de agua programado</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-18" data-keywords="servicios agua corte" tabindex="0">
-        <h4>Corte de agua programado</h4>
-        <p class="meta">Servicios Públicos — 18/10/2025</p>
-        <p>Habrá suspensión del servicio entre las 8:00 y 14:00 por mantenimiento en la red.</p>
+      <div class="acordeon">
+        <button class="acordeon-btn">Corte de agua programado</button>
+        <div class="acordeon-content">
+          <p class="meta">Servicios Públicos — 18/10/2025</p>
+          <p>Suspensión del servicio entre las 8:00 y 14:00 por mantenimiento en la red.</p>
+        </div>
       </div>
 
       <div class="archivo-item" data-type="larga" data-date="2025-10-10" data-keywords="educacion convocatoria talleres" tabindex="0">
         <h4>Convocatoria: Talleres de educación cívica</h4>
         <p class="meta">Educación — 10/10/2025</p>
         <p>Se abren inscripciones para talleres dirigidos a colegios y líderes comunitarios.</p>
-        <a class="btn-ver" href="noticia_101.html">Ver página</a>
+        <a href="https://hernavia.github.io/gachancipa-digital/archivos.html/#pagina" class="btn-ver">Ver página</a>
       </div>
 
-      <button class="acordeon" aria-expanded="false">Reunión de Junta de Acción Comunal</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-10-10" data-keywords="junta accion comunal convocatoria" tabindex="0">
-        <h4>Reunión de Junta de Acción Comunal</h4>
-        <p class="meta">Comunidad — 10/10/2025</p>
-        <p>Convocatoria abierta para todos los presidentes de JAC locales — 7:00 pm en el salón comunal.</p>
+      <div class="acordeon">
+        <button class="acordeon-btn">Reunión de Junta de Acción Comunal</button>
+        <div class="acordeon-content">
+          <p class="meta">Comunidad — 10/10/2025</p>
+          <p>Convocatoria abierta para presidentes de JAC locales — 7:00 pm en el salón comunal.</p>
+        </div>
       </div>
     </article>
 
@@ -82,14 +82,15 @@
         <h4>Inauguración del archivo histórico local</h4>
         <p class="meta">Cultura — 30/09/2025</p>
         <p>Se inauguró el nuevo archivo histórico con materiales digitalizados y acceso público.</p>
-        <a class="btn-ver" href="noticia_89.html">Ver página</a>
+        <a href="https://hernavia.github.io/gachancipa-digital/archivos.html/#pagina" class="btn-ver">Ver página</a>
       </div>
 
-      <button class="acordeon" aria-expanded="false">Seminario de preservación</button>
-      <div class="panel archivo-item archivo-item--short" data-type="corta" data-date="2025-09-30" data-keywords="seminario preservacion archivos" tabindex="0">
-        <h4>Seminario de preservación</h4>
-        <p class="meta">Cultura — 30/09/2025</p>
-        <p>Seminario práctico para gestores de archivos y estudiantes.</p>
+      <div class="acordeon">
+        <button class="acordeon-btn">Seminario de preservación</button>
+        <div class="acordeon-content">
+          <p class="meta">Cultura — 30/09/2025</p>
+          <p>Seminario práctico para gestores de archivos y estudiantes.</p>
+        </div>
       </div>
     </article>
   </main>
@@ -103,26 +104,24 @@
     const searchResults=document.getElementById('searchResults');
     const btnFilter=document.getElementById('btnFilter');
     const btnClear=document.getElementById('btnClear');
-    const dateFrom=document.getElementById('dateFrom');
-    const dateTo=document.getElementById('dateTo');
-    const items=Array.from(document.querySelectorAll('.archivo-item'));
+    const dateFilter=document.getElementById('dateFilter');
+    const items=Array.from(document.querySelectorAll('.archivo-item, .acordeon'));
     const resultCount=document.getElementById('resultCount');
 
     function formatCount(n){return n===0?'No hay resultados':n===1?'1 resultado':n+' resultados';}
 
     function applyFilters(){
       const q=(searchInput.value||'').trim().toLowerCase();
-      const from=dateFrom.value||null,to=dateTo.value||null;
+      const date=dateFilter.value||null;
       let visible=0;
 
       items.forEach(it=>{
         const text=it.textContent.toLowerCase();
-        const date=it.dataset.date;
+        const itDate=it.dataset?.date||it.querySelector('.meta')?.textContent.match(/\d{4}-\d{2}-\d{2}/)?.[0]||'';
         let show=true;
 
         if(q && !text.includes(q)) show=false;
-        if(show && from && date<from) show=false;
-        if(show && to && date>to) show=false;
+        if(show && date && itDate!==date) show=false;
 
         it.style.display=show?'block':'none';
         visible+=show?1:0;
@@ -139,7 +138,7 @@
       const matches=items.filter(it=>it.textContent.toLowerCase().includes(q));
       matches.slice(0,6).forEach(m=>{
         const btn=document.createElement('button');
-        btn.textContent=m.querySelector('h4').textContent;
+        btn.textContent=m.querySelector('h4')?m.querySelector('h4').textContent:m.querySelector('.acordeon-btn').textContent;
         btn.onclick=()=>{
           m.scrollIntoView({behavior:'smooth',block:'center'});
           searchResults.style.display='none';
@@ -152,17 +151,13 @@
     });
 
     btnFilter.addEventListener('click',e=>{e.preventDefault();applyFilters();});
-    btnClear.addEventListener('click',e=>{e.preventDefault();dateFrom.value='';dateTo.value='';searchInput.value='';applyFilters();searchResults.style.display='none';});
+    btnClear.addEventListener('click',e=>{e.preventDefault();dateFilter.value='';searchInput.value='';applyFilters();searchResults.style.display='none';});
 
-    const acordions=document.querySelectorAll('.acordeon');
-    acordions.forEach(btn=>{
+    document.querySelectorAll('.acordeon-btn').forEach(btn=>{
       btn.addEventListener('click',()=>{
-        const expanded=btn.getAttribute('aria-expanded')==='true';
-        btn.setAttribute('aria-expanded',String(!expanded));
-        const panel=btn.nextElementSibling;
-        if(!panel)return;
-        panel.style.display=expanded?'none':'block';
-        panel.setAttribute('aria-hidden',expanded?'true':'false');
+        const content=btn.nextElementSibling;
+        const expanded=content.style.display==='block';
+        content.style.display=expanded?'none':'block';
       });
     });
 
