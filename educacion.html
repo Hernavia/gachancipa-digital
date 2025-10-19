@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Educación — Gachancipá</title>
+<link rel="stylesheet" href="style.css">
+<meta name="description" content="Guías e instrucciones educativas para la comunidad de Gachancipá. Aprende a votar, separar la basura, ahorrar agua y más.">
+</head>
+<body>
+<header>
+  <h1>Educación Cívica y Comunitaria</h1>
+  <div class="header-box"><p>Guías e instrucciones de impacto para Gachancipá</p></div>
+</header>
+
+<nav class="navbar">
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="archivos.html">Archivos</a></li>
+    <li><a href="calendario.html">Calendario</a></li>
+    <li><a href="educacion.html" class="active">Educación</a></li>
+    <li><a href="cronicas.html">Crónicas</a></li>
+    <li><a href="proyectos.html">Proyectos</a></li>
+    <li><a href="llamados.html">Llamados al Pueblo</a></li>
+    <li><a href="wikigacha.html">Enciclopedia Gachancipeña</a></li>
+  </ul>
+  <div class="search-container">
+    <label for="searchInput" class="sr-only">Buscar instrucciones</label>
+    <input type="text" id="searchInput" placeholder="Buscar...">
+    <div id="searchResults"></div>
+  </div>
+</nav>
+
+<main class="archivos-container">
+  <section class="search-controls">
+    <h2>Filtrar instrucciones</h2>
+    <div class="filtros">
+      <label for="dateFrom">Desde</label>
+      <input type="date" id="dateFrom">
+      <label for="dateTo">Hasta</label>
+      <input type="date" id="dateTo">
+      <button id="btnFilter" class="filter-btn">Filtrar</button>
+      <button id="btnClear" class="clear-btn">Limpiar</button>
+    </div>
+    <div class="result-count" id="resultCount">Mostrando todas las instrucciones</div>
+  </section>
+
+  <!-- Páginas -->
+  <div class="page" data-page="1">
+    <details class="archivo-item" data-date="2025-10-01" data-keywords="votar elecciones">
+      <summary>Cómo votar en elecciones locales</summary>
+      <p class="meta">Guía — 01/10/2025</p>
+      <p>Instrucciones para registrarse y emitir su voto correctamente.</p>
+    </details>
+
+    <details class="archivo-item" data-date="2025-10-02" data-keywords="basura reciclaje">
+      <summary>Cómo separar y sacar la basura</summary>
+      <p class="meta">Guía — 02/10/2025</p>
+      <p>Indica los tipos de residuos y los días de recolección correspondientes.</p>
+    </details>
+
+    <details class="archivo-item" data-date="2025-10-03" data-keywords="agua ahorro">
+      <summary>Uso responsable del agua</summary>
+      <p class="meta">Guía — 03/10/2025</p>
+      <p>Consejos para ahorrar agua y mantener las redes municipales eficientes.</p>
+    </details>
+
+    <details class="archivo-item" data-date="2025-10-04" data-keywords="transporte seguridad">
+      <summary>Seguridad en transporte público</summary>
+      <p class="meta">Guía — 04/10/2025</p>
+      <p>Normas de comportamiento y seguridad para usar el transporte municipal.</p>
+    </details>
+  </div>
+
+  <div class="page" data-page="2" style="display:none">
+    <details class="archivo-item" data-date="2025-10-05" data-keywords="luz ahorro">
+      <summary>Ahorro de energía eléctrica en casa</summary>
+      <p class="meta">Guía — 05/10/2025</p>
+      <p>Recomendaciones para reducir el consumo eléctrico y costos.</p>
+    </details>
+  </div>
+
+  <!-- Controles de paginación -->
+  <div class="pagination" style="text-align:center; margin-top:15px;">
+    <button id="prevPage" class="filter-btn">Anterior</button>
+    <button id="nextPage" class="filter-btn">Siguiente</button>
+  </div>
+</main>
+
+<footer>
+  <p>©2025 — Educación Cívica y Comunitaria de Gachancipá</p>
+</footer>
+
+<script>
+// Paginación simple
+let currentPage = 1;
+const pages = document.querySelectorAll('.page');
+const totalPages = pages.length;
+
+function showPage(page) {
+  pages.forEach((p, idx) => {
+    p.style.display = (idx + 1 === page) ? 'block' : 'none';
+  });
+}
+
+document.getElementById('prevPage').addEventListener('click', () => {
+  if(currentPage > 1) {
+    currentPage--;
+    showPage(currentPage);
+  }
+});
+
+document.getElementById('nextPage').addEventListener('click', () => {
+  if(currentPage < totalPages) {
+    currentPage++;
+    showPage(currentPage);
+  }
+});
+
+// Inicial
+showPage(currentPage);
+</script>
+
+<script>
+// Buscador simple como en Archivos
+const searchInput = document.getElementById("searchInput");
+const searchResults = document.getElementById("searchResults");
+const searchItems = document.querySelectorAll(".archivo-item");
+
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  searchResults.innerHTML = "";
+  if(query === "") {
+    searchResults.style.display = "none";
+    return;
+  }
+  let found = false;
+  searchItems.forEach(item => {
+    const keywords = item.dataset.keywords.toLowerCase();
+    if(keywords.includes(query) || item.textContent.toLowerCase().includes(query)) {
+      const btn = document.createElement("button");
+      btn.textContent = item.querySelector("summary").textContent;
+      btn.onclick = () => { item.scrollIntoView({behavior:"smooth"}); searchResults.style.display="none"; searchInput.value=""; };
+      searchResults.appendChild(btn);
+      found = true;
+    }
+  });
+  searchResults.style.display = found ? "block" : "none";
+});
+</script>
+</body>
+</html>
