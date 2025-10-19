@@ -33,18 +33,12 @@
   <main class="archivos-container" id="archivosApp">
     <section class="search-controls">
       <div class="filtros">
-        <div class="controls">
-          <label for="dateFrom">Desde</label>
-          <input type="date" id="dateFrom">
-        </div>
-        <div class="controls">
-          <label for="dateTo">Hasta</label>
-          <input type="date" id="dateTo">
-        </div>
-        <div class="controls">
-          <button id="btnFilter" class="btn-filtro">Filtrar</button>
-          <button id="btnClear" class="btn-filtro">Limpiar</button>
-        </div>
+        <label for="dateFrom">Desde</label>
+        <input type="date" id="dateFrom">
+        <label for="dateTo">Hasta</label>
+        <input type="date" id="dateTo">
+        <button id="btnFilter" class="btn-filtro">Filtrar</button>
+        <button id="btnClear" class="btn-filtro">Limpiar</button>
       </div>
       <div class="result-count" id="resultCount">Mostrando todas las noticias</div>
     </section>
@@ -56,7 +50,7 @@
         <h4>Acta 120: Feria Empresarial y espacio de Yukiherts</h4>
         <p class="meta">Alcaldía — 18/10/2025 — Documentos oficiales</p>
         <p>Se habilitó un espacio para la feria empresarial donde participará Yukiherts.</p>
-        <a class="btn-ver" href="noticia.html?id=120">Ver página</a>
+        <a class="btn-ver Ver página</a>
       </div>
 
       <button class="acordeon" aria-expanded="false">Corte de agua programado</button>
@@ -70,7 +64,7 @@
         <h4>Convocatoria: Talleres de educación cívica</h4>
         <p class="meta">Educación — 10/10/2025</p>
         <p>Se abren inscripciones para talleres dirigidos a colegios y líderes comunitarios.</p>
-        <a class="btn-ver" href="noticia.html?id=101">Ver página</a>
+        <a class="btn-ver" Ver página</a>
       </div>
 
       <button class="acordeon" aria-expanded="false">Reunión de Junta de Acción Comunal</button>
@@ -88,7 +82,7 @@
         <h4>Inauguración del archivo histórico local</h4>
         <p class="meta">Cultura — 30/09/2025</p>
         <p>Se inauguró el nuevo archivo histórico con materiales digitalizados y acceso público.</p>
-        <a class="btn-ver" href="noticia.html?id=89">Ver página</a>
+        <a class="btn-ver" Ver página</a>
       </div>
 
       <button class="acordeon" aria-expanded="false">Seminario de preservación</button>
@@ -120,17 +114,21 @@
       const q=(searchInput.value||'').trim().toLowerCase();
       const from=dateFrom.value||null,to=dateTo.value||null;
       let visible=0;
+
       items.forEach(it=>{
-        const title=it.querySelector('h4')?.textContent?.toLowerCase()||'';
-        const keywords=(it.dataset.keywords||'').toLowerCase();
-        const date=it.dataset.date||'';
-        let match=true;
-        if(q)match=title.includes(q)||keywords.includes(q)||it.textContent.toLowerCase().includes(q);
-        if(match&&from)match=date>=from;
-        if(match&&to)match=date<=to;
-        it.style.display=match?'':'none';
-        visible+=match?1:0;
+        const text=it.textContent.toLowerCase();
+        const date=it.dataset.date;
+        let show=true;
+
+        if(q && !text.includes(q)) show=false;
+
+        if(show && from && date<from) show=false;
+        if(show && to && date>to) show=false;
+
+        it.style.display=show?'block':'none';
+        visible+=show?1:0;
       });
+
       resultCount.textContent=formatCount(visible);
     }
 
@@ -139,11 +137,16 @@
       const q=searchInput.value.trim().toLowerCase();
       searchResults.innerHTML='';
       if(!q){searchResults.style.display='none';return;}
-      const matches=items.filter(it=>(it.dataset.keywords+' '+it.querySelector('h4')?.textContent).toLowerCase().includes(q));
+      const matches=items.filter(it=>it.textContent.toLowerCase().includes(q));
       matches.slice(0,6).forEach(m=>{
         const btn=document.createElement('button');
         btn.textContent=m.querySelector('h4').textContent;
-        btn.onclick=()=>{m.scrollIntoView({behavior:'smooth'});searchResults.style.display='none';searchInput.value='';applyFilters();};
+        btn.onclick=()=>{
+          m.scrollIntoView({behavior:'smooth',block:'center'});
+          searchResults.style.display='none';
+          searchInput.value='';
+          applyFilters();
+        };
         searchResults.appendChild(btn);
       });
       searchResults.style.display=matches.length?'block':'none';
