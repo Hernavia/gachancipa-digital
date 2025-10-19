@@ -4,98 +4,133 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Archivos | Gachancipá Digital</title>
-  <meta name="description" content="Archivos municipales de Gachancipá: comunicados, informes, convocatorias y registros cívicos organizados por fecha.">
+  <meta name="description" content="Consulta comunicados, registros y archivos municipales organizados por fecha en Gachancipá Digital. Plataforma cívica impulsada por Hernavia.">
   <link rel="stylesheet" href="style.css">
-
   <style>
-  /* Flecha con los colores de la bandera */
-  .flecha {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-right: 8px;
-    vertical-align: middle;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 18px solid #078930; /* verde */
-    position: relative;
-  }
-  .flecha::after {
-    content: "";
-    position: absolute;
-    top: 7px;
-    left: -10px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 18px solid #f9db0c; /* amarillo */
-  }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      background-color: #ffffff;
+      color: #222;
+    }
 
-  /* Espaciado de los títulos de fecha */
-  .archivo-dia h3 {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 1.1rem;
-    color: #078930;
-    border-bottom: 2px solid #078930;
-    padding-bottom: 5px;
-    margin-top: 30px;
-  }
+    header {
+      background-color: #078930;
+      color: #fff;
+      text-align: center;
+      padding: 1.5em 0;
+    }
 
-  /* Ajustes para los items */
-  .archivo-item {
-    border: 1px solid #000;
-    border-radius: 8px;
-    padding: 12px;
-    margin: 10px 0;
-    background-color: #e1efdb;
-  }
+    .navbar {
+      background-color: #f9db0c;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5em 1em;
+      flex-wrap: wrap;
+    }
 
-  .btn-ver {
-    display: inline-block;
-    background-color: #078930;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 6px;
-    text-decoration: none;
-  }
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      gap: 1em;
+    }
 
-  .btn-ver:hover {
-    background-color: #066f26;
-  }
+    .navbar a {
+      text-decoration: none;
+      color: #000;
+      padding: 0.5em 0.8em;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s;
+    }
 
-  .indicador {
-    display: block;
-    margin-top: 4px;
-    color: #555;
-    font-size: 0.9rem;
-  }
+    .navbar a:hover {
+      border-bottom: 3px solid #d52b1e;
+    }
 
-  .acordeon {
-    background-color: #f9db0c;
-    border: none;
-    padding: 10px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-  }
+    .navbar a.active {
+      border-bottom: 3px solid #078930;
+      font-weight: bold;
+    }
 
-  .panel {
-    display: none;
-    padding: 8px;
-    background-color: #f6f6f6;
-    border-radius: 0 0 6px 6px;
-  }
+    .search-container {
+      display: flex;
+      gap: 0.5em;
+      flex-wrap: wrap;
+    }
 
-  .archivo-mes h2 {
-    margin-top: 40px;
-    text-align: center;
-    color: #078930;
-  }
+    input[type="text"], select {
+      padding: 0.4em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    main {
+      padding: 1.5em;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .archivo-mes {
+      margin-bottom: 2em;
+      border-left: 5px solid #078930;
+      padding-left: 1em;
+    }
+
+    .archivo-mes h2 {
+      color: #078930;
+      margin-bottom: 0.5em;
+    }
+
+    .archivo-dia h3 {
+      color: #d52b1e;
+      margin-top: 1em;
+    }
+
+    .archivo-item {
+      border: 2px solid #000;
+      padding: 1em;
+      margin: 0.5em 0;
+      border-radius: 5px;
+      background-color: #fff9d6;
+    }
+
+    .archivo-item:hover {
+      background-color: #fff3b0;
+    }
+
+    .btn-ver {
+      display: inline-block;
+      margin-top: 0.5em;
+      text-decoration: none;
+      color: #fff;
+      background-color: #078930;
+      padding: 0.4em 0.8em;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .btn-ver:hover {
+      background-color: #056d25;
+    }
+
+    .indicador {
+      display: block;
+      font-size: 0.9em;
+      margin-top: 0.4em;
+      color: #555;
+    }
+
+    footer {
+      background-color: #f9db0c;
+      text-align: center;
+      padding: 1em;
+      margin-top: 2em;
+      color: #000;
+      font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -119,22 +154,20 @@
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Buscar archivos o temas...">
     <select id="filterDate">
-      <option value="all">Todos los días</option>
-      <option value="14 octubre">14 de octubre</option>
-      <option value="4 octubre">4 de octubre</option>
-      <option value="20 septiembre">20 de septiembre</option>
-      <option value="12 septiembre">12 de septiembre</option>
+      <option value="all">Todos los meses</option>
+      <option value="octubre">Octubre</option>
+      <option value="septiembre">Septiembre</option>
     </select>
   </div>
 </nav>
 
 <main class="archivos-container">
 
-  <section class="archivo-mes">
+  <section class="archivo-mes" data-mes="octubre">
     <h2>Octubre 2025</h2>
 
     <div class="archivo-dia" data-date="14 octubre">
-      <h3><span class="flecha"></span>14 de octubre</h3>
+      <h3>14 de octubre</h3>
 
       <div class="archivo-item" data-keywords="feria empresarial participación ciudadana">
         <h4>Comunicado sobre la Feria Empresarial</h4>
@@ -146,30 +179,18 @@
       <div class="archivo-item" data-keywords="mantenimiento vial obras barrios">
         <button class="acordeon">Informe de mantenimiento vial</button>
         <div class="panel">
-          <p>Durante la primera semana de octubre se realizaron obras menores en los barrios Santa Bárbara y Centro. Se invita a los ciudadanos a reportar nuevos puntos críticos.</p>
-        </div>
-        <span class="indicador">📄 Texto breve</span>
-      </div>
-    </div>
-
-    <div class="archivo-dia" data-date="4 octubre">
-      <h3><span class="flecha"></span>4 de octubre</h3>
-
-      <div class="archivo-item" data-keywords="convocatoria artistas cultura">
-        <button class="acordeon">Convocatoria abierta a artistas locales</button>
-        <div class="panel">
-          <p>La Casa de la Cultura invita a los creadores del municipio a participar en la exposición anual de arte y patrimonio.</p>
+          <p>Durante la primera semana de octubre se realizaron obras menores en los barrios Santa Bárbara y Centro.</p>
         </div>
         <span class="indicador">📄 Texto breve</span>
       </div>
     </div>
   </section>
 
-  <section class="archivo-mes">
+  <section class="archivo-mes" data-mes="septiembre">
     <h2>Septiembre 2025</h2>
 
     <div class="archivo-dia" data-date="20 septiembre">
-      <h3><span class="flecha"></span>20 de septiembre</h3>
+      <h3>20 de septiembre</h3>
 
       <div class="archivo-item" data-keywords="voluntariado ambiental ecologia programa">
         <h4>Convocatoria de voluntariado ambiental</h4>
@@ -180,17 +201,16 @@
     </div>
 
     <div class="archivo-dia" data-date="12 septiembre">
-      <h3><span class="flecha"></span>12 de septiembre</h3>
+      <h3>12 de septiembre</h3>
 
       <div class="archivo-item" data-keywords="acta consejo comunitario educacion">
         <button class="acordeon">Acta del Consejo Comunitario 12-09</button>
         <div class="panel">
-          <p>Se discutieron temas de educación cívica, presupuesto participativo y proyectos de juventud. Próxima sesión programada para el 20 de octubre.</p>
+          <p>Se discutieron temas de educación cívica, presupuesto participativo y proyectos de juventud.</p>
         </div>
         <span class="indicador">📄 Texto breve</span>
       </div>
     </div>
-
   </section>
 
 </main>
@@ -213,35 +233,37 @@
   // --- Buscador + Filtro ---
   const searchInput = document.getElementById("searchInput");
   const filterDate = document.getElementById("filterDate");
-  const dias = document.querySelectorAll(".archivo-dia");
+  const meses = document.querySelectorAll(".archivo-mes");
+  const items = document.querySelectorAll(".archivo-item");
 
   function filtrar() {
     const query = searchInput.value.toLowerCase();
-    const filtroFecha = filterDate.value;
+    const filtroMes = filterDate.value;
 
-    dias.forEach(dia => {
-      const date = dia.dataset.date;
-      let visible = false;
+    meses.forEach(mes => {
+      const nombreMes = mes.dataset.mes;
+      let visibleMes = false;
 
-      dia.querySelectorAll(".archivo-item").forEach(item => {
+      mes.querySelectorAll(".archivo-item").forEach(item => {
         const keywords = item.dataset.keywords.toLowerCase();
         const coincideTexto = keywords.includes(query) || item.textContent.toLowerCase().includes(query);
-        const coincideFecha = (filtroFecha === "all" || filtroFecha === date);
+        const coincideMes = (filtroMes === "all" || filtroMes === nombreMes);
 
-        if (coincideTexto && coincideFecha) {
+        if (coincideTexto && coincideMes) {
           item.style.display = "block";
-          visible = true;
+          visibleMes = true;
         } else {
           item.style.display = "none";
         }
       });
 
-      dia.style.display = visible ? "block" : "none";
+      mes.style.display = visibleMes ? "block" : "none";
     });
   }
 
   searchInput.addEventListener("input", filtrar);
   filterDate.addEventListener("change", filtrar);
 </script>
+
 </body>
 </html>
