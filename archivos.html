@@ -24,6 +24,16 @@
     <li><a href="wikipedia.html">Wikipedia Local</a></li>
     <li><a href="llamados.html">Llamados al Pueblo</a></li>
   </ul>
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Buscar archivos o temas...">
+    <select id="filterDate">
+      <option value="all">Todos los días</option>
+      <option value="14 octubre">14 de octubre</option>
+      <option value="4 octubre">4 de octubre</option>
+      <option value="20 septiembre">20 de septiembre</option>
+      <option value="12 septiembre">12 de septiembre</option>
+    </select>
+  </div>
 </nav>
 
 <main class="archivos-container">
@@ -31,17 +41,17 @@
   <section class="archivo-mes">
     <h2>Octubre 2025</h2>
 
-    <div class="archivo-dia">
+    <div class="archivo-dia" data-date="14 octubre">
       <h3><span class="flecha"></span> 14 de octubre</h3>
 
-      <div class="archivo-item">
+      <div class="archivo-item" data-keywords="feria empresarial participación ciudadana">
         <h4>Comunicado sobre la Feria Empresarial</h4>
         <p>Actualización sobre los preparativos y participación ciudadana.</p>
         <a href="archivo-feria.html" class="btn-ver">Ver más</a>
         <span class="indicador">🌐 Página individual</span>
       </div>
 
-      <div class="archivo-item">
+      <div class="archivo-item" data-keywords="mantenimiento vial obras barrios">
         <button class="acordeon">Informe de mantenimiento vial</button>
         <div class="panel">
           <p>Durante la primera semana de octubre se realizaron obras menores en los barrios
@@ -51,10 +61,10 @@
       </div>
     </div>
 
-    <div class="archivo-dia">
+    <div class="archivo-dia" data-date="4 octubre">
       <h3><span class="flecha"></span> 4 de octubre</h3>
 
-      <div class="archivo-item">
+      <div class="archivo-item" data-keywords="convocatoria artistas cultura">
         <button class="acordeon">Convocatoria abierta a artistas locales</button>
         <div class="panel">
           <p>La Casa de la Cultura invita a los creadores del municipio a participar
@@ -68,10 +78,10 @@
   <section class="archivo-mes">
     <h2>Septiembre 2025</h2>
 
-    <div class="archivo-dia">
+    <div class="archivo-dia" data-date="20 septiembre">
       <h3><span class="flecha"></span> 20 de septiembre</h3>
 
-      <div class="archivo-item">
+      <div class="archivo-item" data-keywords="voluntariado ambiental ecologia programa">
         <h4>Convocatoria de voluntariado ambiental</h4>
         <p>La Alcaldía invita a participar en el programa de recuperación ecológica local.</p>
         <a href="archivo-voluntariado.html" class="btn-ver">Ver más</a>
@@ -79,10 +89,10 @@
       </div>
     </div>
 
-    <div class="archivo-dia">
+    <div class="archivo-dia" data-date="12 septiembre">
       <h3><span class="flecha"></span> 12 de septiembre</h3>
 
-      <div class="archivo-item">
+      <div class="archivo-item" data-keywords="acta consejo comunitario educacion">
         <button class="acordeon">Acta del Consejo Comunitario 12-09</button>
         <div class="panel">
           <p>Se discutieron temas de educación cívica, presupuesto participativo y proyectos
@@ -101,6 +111,7 @@
 </footer>
 
 <script>
+  // --- Acordeón ---
   const accordions = document.querySelectorAll(".acordeon");
   accordions.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -109,6 +120,40 @@
       panel.style.display = panel.style.display === "block" ? "none" : "block";
     });
   });
+
+  // --- Buscador + Filtro ---
+  const searchInput = document.getElementById("searchInput");
+  const filterDate = document.getElementById("filterDate");
+  const dias = document.querySelectorAll(".archivo-dia");
+  const items = document.querySelectorAll(".archivo-item");
+
+  function filtrar() {
+    const query = searchInput.value.toLowerCase();
+    const filtroFecha = filterDate.value;
+
+    dias.forEach(dia => {
+      const date = dia.dataset.date;
+      let visible = false;
+
+      dia.querySelectorAll(".archivo-item").forEach(item => {
+        const keywords = item.dataset.keywords.toLowerCase();
+        const coincideTexto = keywords.includes(query) || item.textContent.toLowerCase().includes(query);
+        const coincideFecha = (filtroFecha === "all" || filtroFecha === date);
+
+        if (coincideTexto && coincideFecha) {
+          item.style.display = "block";
+          visible = true;
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      dia.style.display = visible ? "block" : "none";
+    });
+  }
+
+  searchInput.addEventListener("input", filtrar);
+  filterDate.addEventListener("change", filtrar);
 </script>
 
 </body>
