@@ -21,7 +21,12 @@
     <li><a href="archivos.html" class="active">Archivos</a></li>
     <li><a href="proyectos.html">Proyectos</a></li>
     <li><a href="educacion.html">Educación</a></li>
+    <li><a href="cronicas.html">Crónicas</a></li>
+    <li><a href="wiki.html">Wikipedia Local</a></li>
+    <li><a href="aula.html">Aula Municipal</a></li>
+    <li><a href="llamados.html">Llamados al Pueblo</a></li>
   </ul>
+
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Buscar...">
     <select id="filterDate">
@@ -43,14 +48,16 @@
 
       <div class="archivo-item">
         <h4>Actualización de la plataforma cívica</h4>
-        <p>Se integraron las nuevas funciones de búsqueda y filtrado automático para mejorar la consulta de documentos.</p>
-        <a href="archivo1.html" class="btn-ver">Ver documento</a>
-        <span class="indicador">Archivo interno — categoría: innovación</span>
+        <p>Se incorporaron nuevas funciones de búsqueda, filtrado y mejoras visuales para fortalecer la participación ciudadana.</p>
+        <a href="archivo1.html" class="btn-ver">Ver más</a>
+        <span class="indicador">Categoría: Tecnología cívica</span>
       </div>
 
-      <button class="acordeon">Más detalles</button>
-      <div class="panel">
-        <p>Este archivo describe la evolución técnica de la plataforma municipal digital, incluyendo estructura y compatibilidad.</p>
+      <div class="archivo-item">
+        <h4>Convocatoria de proyectos comunitarios</h4>
+        <p>La Alcaldía abre convocatoria para iniciativas ambientales y de emprendimiento local con apoyo logístico y técnico.</p>
+        <a href="archivo2.html" class="btn-ver">Ver más</a>
+        <span class="indicador">Categoría: Comunidad</span>
       </div>
     </div>
 
@@ -59,14 +66,16 @@
 
       <div class="archivo-item">
         <h4>Acta del consejo comunitario</h4>
-        <p>Resumen de las decisiones sobre proyectos ambientales y apoyo a emprendimientos locales.</p>
-        <a href="archivo2.html" class="btn-ver">Ver documento</a>
-        <span class="indicador">Acta oficial — participación ciudadana</span>
+        <p>Se aprobaron nuevos programas ambientales y educativos para fortalecer el tejido social del municipio.</p>
+        <a href="archivo3.html" class="btn-ver">Ver más</a>
+        <span class="indicador">Acta oficial — Participación</span>
       </div>
 
-      <button class="acordeon">Ver resumen</button>
-      <div class="panel">
-        <p>Durante la reunión se aprobaron dos programas: Jardines Urbanos y Huertas Escolares, ambos con participación comunal.</p>
+      <div class="archivo-item">
+        <h4>Informe cultural de la semana</h4>
+        <p>Resumen de actividades artísticas y educativas realizadas durante la Semana de la Cultura Municipal.</p>
+        <a href="archivo4.html" class="btn-ver">Ver más</a>
+        <span class="indicador">Cultura y educación</span>
       </div>
     </div>
   </section>
@@ -99,16 +108,7 @@ function filtrar() {
     mes.style.display = visible ? "block" : "none";
   });
 }
-
-const acordeones = document.querySelectorAll(".acordeon");
-acordeones.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const panel = btn.nextElementSibling;
-    panel.style.display = panel.style.display === "block" ? "none" : "block";
-  });
-});
 </script>
 
 </body>
 </html>
-
