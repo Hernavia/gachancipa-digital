@@ -2,133 +2,101 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crónicas de Gachancipá</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f9f9f9;
-      color: #000;
-    }
-
-    nav.navbar {
-      background-color: #fff;
-      border-bottom: 2px solid #000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 1rem;
-    }
-
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      gap: 1rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-      border: 1px solid black;
-      padding: 5px 10px;
-      transition: background 0.3s;
-    }
-
-    nav a:hover {
-      background-color: yellow;
-    }
-
-    .search-container {
-      display: flex;
-      align-items: center;
-    }
-
-    .search-container input {
-      padding: 5px;
-      border: 1px solid black;
-      border-radius: 4px;
-    }
-
-    main {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h1 {
-      text-align: center;
-      border-bottom: 2px solid black;
-      padding-bottom: 10px;
-    }
-
-    details {
-      border: 1px solid black;
-      margin: 15px 0;
-      padding: 10px;
-      border-radius: 4px;
-      background-color: white;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    footer {
-      border-top: 2px solid #000;
-      text-align: center;
-      padding: 10px;
-      margin-top: 20px;
-      background: #fff;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crónicas — Gachancipá</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+  <h1>Crónicas Gachancipeñas</h1>
+  <div class="header-box"><p>Relatos, historias y memoria viva de Gachancipá</p></div>
+</header>
 
-  <nav class="navbar">
+<nav class="navbar">
   <ul>
     <li><a href="index.html">Inicio</a></li>
     <li><a href="archivos.html">Archivos</a></li>
     <li><a href="calendario.html">Calendario</a></li>
     <li><a href="educacion.html">Educación</a></li>
-    <li><a href="cronicas.html">Crónicas</a></li>
-    <li><a href="proyectos.html" class="active">Proyectos</a></li>
+    <li><a href="cronicas.html" class="active">Crónicas</a></li>
+    <li><a href="proyectos.html">Proyectos</a></li>
     <li><a href="llamados.html">Llamados al Pueblo</a></li>
     <li><a href="wikigacha.html">Enciclopedia Gachancipeña</a></li>
   </ul>
-    <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Buscar crónicas...">
+  <div class="search-container">
+    <label for="searchInput" class="sr-only">Buscar en las crónicas</label>
+    <input type="text" id="searchInput" placeholder="Buscar...">
+    <div id="searchResults"></div>
+  </div>
+</nav>
+
+<main>
+  <section class="search-controls">
+    <h2>Filtrar crónicas</h2>
+    <div class="filtros">
+      <label for="keyword">Palabra clave:</label>
+      <input type="text" id="keyword" placeholder="Ej. parque, hernavia...">
+      <button id="btnFilter" class="filter-btn">Buscar</button>
+      <button id="btnClear" class="clear-btn">Limpiar</button>
     </div>
-  </nav>
+    <div class="result-count" id="resultCount">Mostrando todas las crónicas</div>
+  </section>
 
-  <main>
-    <h1>Crónicas de Gachancipá</h1>
+  <article class="archivo-mes" data-category="cronicas">
+    <h2>Crónicas recientes</h2>
 
-    <details>
+    <details class="archivo-item" data-keywords="hernavia segunda web digital">
       <summary>La segunda web de Hernavia</summary>
-      <p><strong>Autor:</strong> Equipo de Hernavia — <strong>Fecha:</strong> 19/10/2025</p>
+      <p class="meta">Autor: Equipo Hernavia — Fecha: 19/10/2025</p>
       <p>En octubre de 2025 se lanzó la segunda web de Hernavia, integrada con el proyecto “Gachancipá Digital”. 
       Esta nueva versión busca fortalecer la transparencia, la participación ciudadana y la memoria digital del municipio, 
       uniendo innovación y cultura local en una sola plataforma cívica.</p>
     </details>
 
-    <details>
+    <details class="archivo-item" data-keywords="parque principal restauración cultura">
       <summary>Restauración del Parque Principal</summary>
-      <p><strong>Autor:</strong> Crónicas Gachancipeñas — <strong>Fecha:</strong> 10/09/2025</p>
-      <p>Durante el mes de septiembre, se completó la restauración del parque principal de Gachancipá. 
+      <p class="meta">Autor: Crónicas Gachancipeñas — Fecha: 10/09/2025</p>
+      <p>Durante el mes de septiembre se completó la restauración del parque principal de Gachancipá. 
       El proyecto incluyó la renovación de senderos, instalación de nueva iluminación y rescate de zonas verdes. 
       Los habitantes celebraron el cambio con actividades culturales y una feria local de emprendimiento.</p>
     </details>
 
-  </main>
+  </article>
+</main>
 
-  <footer>
-    <p>© 2025 Gachancipá Digital — Proyecto vinculado a Hernavia</p>
-  </footer>
+<footer>
+  <p>© 2025 Gachancipá Digital — Proyecto vinculado a Hernavia</p>
+</footer>
+
+<script>
+  // Buscador básico
+  const filterBtn = document.getElementById('btnFilter');
+  const clearBtn = document.getElementById('btnClear');
+  const keywordInput = document.getElementById('keyword');
+  const items = document.querySelectorAll('.archivo-item');
+  const resultCount = document.getElementById('resultCount');
+
+  filterBtn.addEventListener('click', () => {
+    const keyword = keywordInput.value.toLowerCase();
+    let count = 0;
+    items.forEach(item => {
+      const text = item.getAttribute('data-keywords').toLowerCase();
+      if (text.includes(keyword)) {
+        item.style.display = '';
+        count++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+    resultCount.textContent = `Mostrando ${count} crónica(s)`;
+  });
+
+  clearBtn.addEventListener('click', () => {
+    keywordInput.value = '';
+    items.forEach(item => item.style.display = '');
+    resultCount.textContent = 'Mostrando todas las crónicas';
+  });
+</script>
 
 </body>
 </html>
