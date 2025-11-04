@@ -16,12 +16,10 @@ banner.style.zIndex = '9999';
 banner.style.boxShadow = '0 2px 5px rgba(0,0,0,0.3)';
 banner.innerHTML = `⚠️ AVISO: Esta es una versión demo sin información real. 
 Puedes apoyar revisando el sitio, compartiéndolo y enviando tus comentarios a 
-<a href="mailto:info@hernavia.com" style="color: #ffff00; text-decoration: underline;">info@hernavia.com</a> ⚠️`;
+<a href="mailto:hernaviaoficial@gmail.com" style="color: #ffff00; text-decoration: underline;">hernaviaoficial@gmial.com</a> ⚠️`;
 
-// Insertar el banner al inicio del body
 document.body.insertBefore(banner, document.body.firstChild);
 
-// Agregar un espacio extra para que el contenido no quede debajo del banner
 const spacer = document.createElement('div');
 spacer.style.height = '70px';
 document.body.insertBefore(spacer, banner.nextSibling);
